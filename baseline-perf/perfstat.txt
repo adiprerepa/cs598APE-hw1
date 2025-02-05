@@ -1,0 +1,22 @@
+# started on Wed Feb  5 01:39:38 2025
+
+
+ Performance counter stats for './main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500':
+
+           1192.43 msec task-clock                       #    0.999 CPUs utilized             
+                 9      context-switches                 #    7.548 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               328      page-faults                      #  275.068 /sec                      
+        5653965466      cycles                           #    4.742 GHz                       
+         278973115      stalled-cycles-frontend          #    4.93% frontend cycles idle      
+       13466418461      instructions                     #    2.38  insn per cycle            
+                                                  #    0.02  stalled cycles per insn   
+        1031052153      branches                         #  864.662 M/sec                     
+            703407      branch-misses                    #    0.07% of all branches           
+
+       1.193449336 seconds time elapsed
+
+       1.191005000 seconds user
+       0.002000000 seconds sys
+
+
