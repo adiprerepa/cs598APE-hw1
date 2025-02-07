@@ -1,0 +1,37 @@
+name: Build and Profile using Docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-profile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run the Docker container and execute the profiling script
+        run: |
+          docker run --privileged -v $(pwd):/host adiprerepa/598ape /bin/bash -c "
+            cd /host &&
+            make -j &&
+            perf record -F 99 -g -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500 &&
+            perf stat -o perfstat.txt -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500 &&
+            git clone --depth=1 https://github.com/brendangregg/FlameGraph.git &&
+            perf script | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > flamegraph.svg"
+
+      - name: Upload profiling artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: profiling-results
+          path: |
+            perf.data
+            perfstat.txt
+            flamegraph.svg
