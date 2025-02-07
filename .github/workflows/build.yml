@@ -24,7 +24,7 @@ jobs:
             make -j &&
             perf record -F 99 -g -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500 &&
             perf stat -o perfstat.txt -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500 &&
-            git clone --depth=1 https://github.com/brendangregg/FlameGraph.git &&
+            chown $(id -u):$(id -g) perf.data &&
             perf script | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > flamegraph.svg"
 
       - name: Upload profiling artifacts

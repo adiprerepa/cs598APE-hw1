@@ -17,7 +17,9 @@ RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-19 10 --sl
 
 RUN apt update
 
-RUN apt-get install -y linux-tools-$(uname -r)
+RUN apt-get install -y linux-tools-common linux-tools-generic \
+    linux-tools-$(uname -r) || \
+    apt-get install -y linux-tools-azure linux-cloud-tools-azure
 
 RUN ln -s /usr/bin/convert /usr/bin/magick
 
