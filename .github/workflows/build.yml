@@ -17,17 +17,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install linux-tools on host
-        run: |
-          KERNEL_VERSION=$(uname -r)
-          sudo apt-get update && sudo apt-get install -y \
-            linux-tools-common linux-tools-generic \
-            linux-tools-azure linux-cloud-tools-azure \
-            linux-tools-$KERNEL_VERSION linux-cloud-tools-$KERNEL_VERSION || true
+      # - name: Install linux-tools on host
+      #   run: |
+      #     KERNEL_VERSION=$(uname -r)
+      #     sudo apt-get update && sudo apt-get install -y \
+      #       linux-tools-common linux-tools-generic \
+      #       linux-tools-azure linux-cloud-tools-azure \
+      #       linux-tools-$KERNEL_VERSION linux-cloud-tools-$KERNEL_VERSION \
+      #       linux-tools-6.8.0-1020-azure \
+      #       linux-cloud-tools-6.8.0-1020-azure \
+      #       linux-tools-azure \
+      #       linux-cloud-tools-azure || true
 
       - name: Run the Docker container and execute the profiling script
         run: |
-          docker run --privileged -v $(pwd):/host adiprerepa/598ape /bin/bash -c "
+          docker run --privileged -u $(id -u):$(id -g) -v $(pwd):/host adiprerepa/598ape /bin/bash -c "
             cd /host &&
             make -j &&
             perf record -F 99 -g -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500 &&
