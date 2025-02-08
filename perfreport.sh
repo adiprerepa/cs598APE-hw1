@@ -1,4 +1,6 @@
 #!/bin/bash
+set -x
+set -e
 make -j
 rm -rf perf && mkdir perf
 cp main.exe perf/
