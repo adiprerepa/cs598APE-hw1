@@ -50,37 +50,20 @@ void insertionSort(TimeAndShape *arr, int n) {
 
 void calcColor(unsigned char* toFill,Autonoma* c, Ray ray, unsigned int depth){
    ShapeNode* t = c->listStart;
-   // TimeAndShape *times = (TimeAndShape*)malloc(0); // remove malloc
+   TimeAndShape *times = (TimeAndShape*)malloc(0);
    size_t seen = 0;
-   size_t listsize = 0;
+   while(t!=NULL){
+      double time = t->data->getIntersection(ray);
 
-   ShapeNode* tmp = t;
-   while (tmp != NULL) {
-      listsize++;
-      tmp = tmp->next;
+      TimeAndShape *times2 = (TimeAndShape*)malloc(sizeof(TimeAndShape)*(seen + 1));
+      for (int i=0; i<seen; i++)
+         times2[i] = times[i];
+      times2[seen] = (TimeAndShape){ time, t->data };
+      free(times);
+      times = times2;
+      seen ++;
+      t = t->next;
    }
-   TimeAndShape* times = (TimeAndShape*)malloc(sizeof(TimeAndShape)*listsize); // 1 malloc at the beginning
-   tmp = t;
-   for (int i=0; i<listsize; i++) {
-      double time = tmp->data->getIntersection(ray);
-      times[i] = (TimeAndShape){ time, tmp->data };
-      tmp = tmp->next;
-   }
-   seen = listsize;
-
-
-   // while(t!=NULL){
-   //    double time = t->data->getIntersection(ray);
-
-   //    TimeAndShape *times2 = (TimeAndShape*)malloc(sizeof(TimeAndShape)*(seen + 1)); // 1 malloc at the beginning
-   //    for (int i=0; i<seen; i++)
-   //       times2[i] = times[i];
-   //    times2[seen] = (TimeAndShape){ time, t->data };
-   //    free(times);
-   //    times = times2;
-   //    seen ++;
-   //    t = t->next;
-   // }
    insertionSort(times, seen);
    if (seen == 0 || times[0].time == inf) {
       double opacity, reflection, ambient;

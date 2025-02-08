@@ -6,7 +6,6 @@
 class Plane : public Shape{
 public:
   Vector vect, right, up;
-  double denom;
   double d;
   Plane(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty);
   double getIntersection(Ray ray);
