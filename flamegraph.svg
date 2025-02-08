@@ -431,36 +431,8 @@
 <text id="matched" x="2290.00" y="1013" > </text>
 <g id="frames">
 <g >
-<title>load_elf_binary (311,734 samples, 0.01%)</title><rect x="2389.9" y="373" width="0.1" height="47.0" fill="rgb(223,83,20)" rx="2" ry="2" />
-<text  x="2392.85" y="399.5" ></text>
-</g>
-<g >
-<title>[main.exe] (4,981,806,806 samples, 99.99%)</title><rect x="10.0" y="805" width="2379.9" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
-<text  x="13.00" y="831.5" >[main.exe]</text>
-</g>
-<g >
-<title>up_write (311,734 samples, 0.01%)</title><rect x="2389.9" y="37" width="0.1" height="47.0" fill="rgb(235,139,33)" rx="2" ry="2" />
-<text  x="2392.85" y="63.5" ></text>
-</g>
-<g >
-<title>main.exe (4,982,118,540 samples, 100.00%)</title><rect x="10.0" y="901" width="2380.0" height="47.0" fill="rgb(216,53,12)" rx="2" ry="2" />
-<text  x="13.00" y="927.5" >main.exe</text>
-</g>
-<g >
-<title>all (4,982,120,392 samples, 100%)</title><rect x="10.0" y="949" width="2380.0" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="13.00" y="975.5" ></text>
-</g>
-<g >
-<title>[unknown] (4,982,118,540 samples, 100.00%)</title><rect x="10.0" y="853" width="2380.0" height="47.0" fill="rgb(210,24,5)" rx="2" ry="2" />
-<text  x="13.00" y="879.5" >[unknown]</text>
-</g>
-<g >
-<title>__x64_sys_execve (311,734 samples, 0.01%)</title><rect x="2389.9" y="661" width="0.1" height="47.0" fill="rgb(247,193,46)" rx="2" ry="2" />
-<text  x="2392.85" y="687.5" ></text>
-</g>
-<g >
-<title>bprm_execve (311,734 samples, 0.01%)</title><rect x="2389.9" y="565" width="0.1" height="47.0" fill="rgb(218,61,14)" rx="2" ry="2" />
-<text  x="2392.85" y="591.5" ></text>
+<title>x64_sys_call (311,734 samples, 0.01%)</title><rect x="2389.9" y="709" width="0.1" height="47.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="2392.85" y="735.5" ></text>
 </g>
 <g >
 <title>vma_link (311,734 samples, 0.01%)</title><rect x="2389.9" y="85" width="0.1" height="47.0" fill="rgb(229,110,26)" rx="2" ry="2" />
@@ -471,64 +443,32 @@
 <text  x="2392.85" y="207.5" ></text>
 </g>
 <g >
-<title>arch_setup_additional_pages (311,734 samples, 0.01%)</title><rect x="2389.9" y="325" width="0.1" height="47.0" fill="rgb(236,146,35)" rx="2" ry="2" />
-<text  x="2392.85" y="351.5" ></text>
-</g>
-<g >
-<title>entry_SYSCALL_64_after_hwframe (311,734 samples, 0.01%)</title><rect x="2389.9" y="805" width="0.1" height="47.0" fill="rgb(218,63,15)" rx="2" ry="2" />
-<text  x="2392.85" y="831.5" ></text>
-</g>
-<g >
-<title>map_vdso (311,734 samples, 0.01%)</title><rect x="2389.9" y="277" width="0.1" height="47.0" fill="rgb(227,103,24)" rx="2" ry="2" />
-<text  x="2392.85" y="303.5" ></text>
-</g>
-<g >
-<title>search_binary_handler (311,734 samples, 0.01%)</title><rect x="2389.9" y="421" width="0.1" height="47.0" fill="rgb(208,14,3)" rx="2" ry="2" />
-<text  x="2392.85" y="447.5" ></text>
-</g>
-<g >
-<title>insert_vm_struct (311,734 samples, 0.01%)</title><rect x="2389.9" y="133" width="0.1" height="47.0" fill="rgb(226,98,23)" rx="2" ry="2" />
-<text  x="2392.85" y="159.5" ></text>
+<title>[main.exe] (4,561,451,846 samples, 91.56%)</title><rect x="210.8" y="661" width="2179.1" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="213.81" y="687.5" >[main.exe]</text>
 </g>
 <g >
 <title>exec_binprm (311,734 samples, 0.01%)</title><rect x="2389.9" y="469" width="0.1" height="47.0" fill="rgb(244,180,43)" rx="2" ry="2" />
 <text  x="2392.85" y="495.5" ></text>
 </g>
 <g >
-<title>[main.exe] (4,933,271,555 samples, 99.02%)</title><rect x="33.2" y="757" width="2356.7" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
-<text  x="36.19" y="783.5" >[main.exe]</text>
+<title>up_write (311,734 samples, 0.01%)</title><rect x="2389.9" y="37" width="0.1" height="47.0" fill="rgb(235,139,33)" rx="2" ry="2" />
+<text  x="2392.85" y="63.5" ></text>
 </g>
 <g >
-<title>[main.exe] (4,842,896,546 samples, 97.21%)</title><rect x="76.4" y="709" width="2313.5" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
-<text  x="79.36" y="735.5" >[main.exe]</text>
+<title>[main.exe] (4,981,806,806 samples, 99.99%)</title><rect x="10.0" y="805" width="2379.9" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="13.00" y="831.5" >[main.exe]</text>
 </g>
 <g >
-<title>[main.exe] (232,655,673 samples, 4.67%)</title><rect x="2278.7" y="517" width="111.2" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
-<text  x="2281.71" y="543.5" >[main.exe]</text>
+<title>bprm_execve (311,734 samples, 0.01%)</title><rect x="2389.9" y="565" width="0.1" height="47.0" fill="rgb(218,61,14)" rx="2" ry="2" />
+<text  x="2392.85" y="591.5" ></text>
 </g>
 <g >
-<title>do_syscall_64 (311,734 samples, 0.01%)</title><rect x="2389.9" y="757" width="0.1" height="47.0" fill="rgb(209,20,4)" rx="2" ry="2" />
-<text  x="2392.85" y="783.5" ></text>
+<title>all (4,982,120,392 samples, 100%)</title><rect x="10.0" y="949" width="2380.0" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
+<text  x="13.00" y="975.5" ></text>
 </g>
 <g >
-<title>[main.exe] (4,561,451,846 samples, 91.56%)</title><rect x="210.8" y="661" width="2179.1" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
-<text  x="213.81" y="687.5" >[main.exe]</text>
-</g>
-<g >
-<title>bprm_execve.part.0 (311,734 samples, 0.01%)</title><rect x="2389.9" y="517" width="0.1" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
-<text  x="2392.85" y="543.5" ></text>
-</g>
-<g >
-<title>[main.exe] (743,191,672 samples, 14.92%)</title><rect x="2034.8" y="565" width="355.1" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
-<text  x="2037.82" y="591.5" >[main.exe]</text>
-</g>
-<g >
-<title>x64_sys_call (311,734 samples, 0.01%)</title><rect x="2389.9" y="709" width="0.1" height="47.0" fill="rgb(247,194,46)" rx="2" ry="2" />
-<text  x="2392.85" y="735.5" ></text>
-</g>
-<g >
-<title>_install_special_mapping (311,734 samples, 0.01%)</title><rect x="2389.9" y="229" width="0.1" height="47.0" fill="rgb(226,98,23)" rx="2" ry="2" />
-<text  x="2392.85" y="255.5" ></text>
+<title>arch_setup_additional_pages (311,734 samples, 0.01%)</title><rect x="2389.9" y="325" width="0.1" height="47.0" fill="rgb(236,146,35)" rx="2" ry="2" />
+<text  x="2392.85" y="351.5" ></text>
 </g>
 <g >
 <title>do_execveat_common.isra.0 (311,734 samples, 0.01%)</title><rect x="2389.9" y="613" width="0.1" height="47.0" fill="rgb(231,123,29)" rx="2" ry="2" />
@@ -537,6 +477,66 @@
 <g >
 <title>[main.exe] (2,438,888,933 samples, 48.95%)</title><rect x="1224.8" y="613" width="1165.1" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
 <text  x="1227.77" y="639.5" >[main.exe]</text>
+</g>
+<g >
+<title>[unknown] (4,982,118,540 samples, 100.00%)</title><rect x="10.0" y="853" width="2380.0" height="47.0" fill="rgb(210,24,5)" rx="2" ry="2" />
+<text  x="13.00" y="879.5" >[unknown]</text>
+</g>
+<g >
+<title>[main.exe] (4,842,896,546 samples, 97.21%)</title><rect x="76.4" y="709" width="2313.5" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="79.36" y="735.5" >[main.exe]</text>
+</g>
+<g >
+<title>load_elf_binary (311,734 samples, 0.01%)</title><rect x="2389.9" y="373" width="0.1" height="47.0" fill="rgb(223,83,20)" rx="2" ry="2" />
+<text  x="2392.85" y="399.5" ></text>
+</g>
+<g >
+<title>search_binary_handler (311,734 samples, 0.01%)</title><rect x="2389.9" y="421" width="0.1" height="47.0" fill="rgb(208,14,3)" rx="2" ry="2" />
+<text  x="2392.85" y="447.5" ></text>
+</g>
+<g >
+<title>main.exe (4,982,118,540 samples, 100.00%)</title><rect x="10.0" y="901" width="2380.0" height="47.0" fill="rgb(216,53,12)" rx="2" ry="2" />
+<text  x="13.00" y="927.5" >main.exe</text>
+</g>
+<g >
+<title>map_vdso (311,734 samples, 0.01%)</title><rect x="2389.9" y="277" width="0.1" height="47.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="2392.85" y="303.5" ></text>
+</g>
+<g >
+<title>[main.exe] (232,655,673 samples, 4.67%)</title><rect x="2278.7" y="517" width="111.2" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="2281.71" y="543.5" >[main.exe]</text>
+</g>
+<g >
+<title>__x64_sys_execve (311,734 samples, 0.01%)</title><rect x="2389.9" y="661" width="0.1" height="47.0" fill="rgb(247,193,46)" rx="2" ry="2" />
+<text  x="2392.85" y="687.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (311,734 samples, 0.01%)</title><rect x="2389.9" y="757" width="0.1" height="47.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="2392.85" y="783.5" ></text>
+</g>
+<g >
+<title>[main.exe] (743,191,672 samples, 14.92%)</title><rect x="2034.8" y="565" width="355.1" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="2037.82" y="591.5" >[main.exe]</text>
+</g>
+<g >
+<title>_install_special_mapping (311,734 samples, 0.01%)</title><rect x="2389.9" y="229" width="0.1" height="47.0" fill="rgb(226,98,23)" rx="2" ry="2" />
+<text  x="2392.85" y="255.5" ></text>
+</g>
+<g >
+<title>insert_vm_struct (311,734 samples, 0.01%)</title><rect x="2389.9" y="133" width="0.1" height="47.0" fill="rgb(226,98,23)" rx="2" ry="2" />
+<text  x="2392.85" y="159.5" ></text>
+</g>
+<g >
+<title>[main.exe] (4,933,271,555 samples, 99.02%)</title><rect x="33.2" y="757" width="2356.7" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="36.19" y="783.5" >[main.exe]</text>
+</g>
+<g >
+<title>bprm_execve.part.0 (311,734 samples, 0.01%)</title><rect x="2389.9" y="517" width="0.1" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="2392.85" y="543.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (311,734 samples, 0.01%)</title><rect x="2389.9" y="805" width="0.1" height="47.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="2392.85" y="831.5" ></text>
 </g>
 </g>
 </svg>

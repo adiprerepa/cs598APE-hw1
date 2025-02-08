@@ -17,9 +17,15 @@ RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-19 10 --sl
 
 RUN apt update
 
-RUN apt-get install -y linux-tools-common linux-tools-generic \
-    linux-tools-$(uname -r) || \
-    apt-get install -y linux-tools-azure linux-cloud-tools-azure
+RUN export KERNEL_VERSION=$(uname -r) && \
+    apt-get update && apt-get install -y --no-install-recommends \
+        autoconf cmake ninja-build gcc g++ linux-tools-common linux-tools-generic \
+        libtool llvm-19-dev lld-19 clang-19 libomp-19-dev libopenmpi-dev openmpi-bin \
+        git make imagemagick ffmpeg perl curl gnupg software-properties-common \
+        linux-tools-azure linux-cloud-tools-azure \
+        linux-tools-$KERNEL_VERSION linux-cloud-tools-$KERNEL_VERSION \
+        linux-tools-6.8.0-1020-azure linux-cloud-tools-6.8.0-1020-azure || true
+
 
 RUN ln -s /usr/bin/convert /usr/bin/magick
 
