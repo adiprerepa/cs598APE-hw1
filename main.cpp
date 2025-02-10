@@ -13,6 +13,8 @@
 #include<stdlib.h>
 #include <string.h>
 #include <iostream>
+#include <omp.h>
+#include <thread>
 using namespace std;
 
 #include <sys/time.h>
@@ -46,6 +48,10 @@ void set(int i, int j, unsigned char r, unsigned char g, unsigned char b){
 }
 
 void refresh(Autonoma* c){
+   int num_threads = std::thread::hardware_concurrency(); 
+   std::cout << "Number of threads: " << num_threads << std::endl;
+
+   #pragma omp parallel for schedule(dynamic)
    for(int n = 0; n<H*W; ++n) 
    { 
       Vector ra = c->camera.forward+((double)(n%W)/W-.5)*((c->camera.right))+(.5-(double)(n/W)/H)*((c->camera.up));
