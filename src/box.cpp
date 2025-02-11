@@ -8,7 +8,7 @@ double Box::getIntersection(Ray ray){
    if(time==inf) 
       return time;
    Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*time-center);
-   return (std::abs(dist.x)*2>textureX || std::abs((dist.y)*2>textureY))?inf:time;
+   return (std::abs(dist.x)*2>textureX || std::abs(dist.y)*2>textureY)?inf:time;
 }
 
 bool Box::getLightIntersection(Ray ray, double* fill){
