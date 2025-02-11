@@ -76,8 +76,6 @@ public:
   inline Vector operator/(const float a, const Vector b){
    return Vector(a/b.x,a/b.y,a/b.z);
   }
-  
-  Vector solveScalers(Vector v1, Vector v2, Vector v3, Vector solve, double denom);
 
 int print_vector(FILE *stream, const struct printf_info *info, const void 
 *const *args);
