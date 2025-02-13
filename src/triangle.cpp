@@ -35,6 +35,9 @@ Triangle::Triangle(Vector c, Vector b, Vector a, Texture* t):Plane(Vector(0,0,0)
    textureY = np.y;
    thirdX = np.x;
    
+   denom = right.z * up.y * vect.x - right.y * up.z * vect.x
+                 - right.z * up.x * vect.y + right.x * up.z * vect.y
+                 + right.y * up.x * vect.z - right.x * up.y * vect.z;
    d = -vect.dot(center);
 }
 
