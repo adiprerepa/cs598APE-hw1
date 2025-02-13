@@ -2,3 +2,4 @@
 .idea/
 main.exe.dSYM/
 *.obj
+*.exe
