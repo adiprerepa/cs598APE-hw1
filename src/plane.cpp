@@ -111,10 +111,6 @@ double Plane::getIntersection(Ray ray){
 }
 
 Vector Plane::solveScalers(Vector C) {
-   //  double denom = v1z * v2y * vect.x - v1y * v2z * vect.x
-               //   - v1z * v2x * v3y + v1x * v2z * v3y
-               //   + v1y * v2x * v3z - v1x * v2y * v3z;
-
     double a = C.z * v2yv3x - C.y * v2zv3x
              - C.z * v2xv3y + C.x * v2zv3y
              + C.y * v2xv3z - C.x * v2yv3z;
