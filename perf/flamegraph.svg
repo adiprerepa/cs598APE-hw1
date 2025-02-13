@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" width="2400" height="694" onload="init(evt)" viewBox="0 0 2400 694" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.1" width="2400" height="1414" onload="init(evt)" viewBox="0 0 2400 1414" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
 <!-- NOTES:  -->
 <defs>
@@ -422,321 +422,177 @@
 	}
 ]]>
 </script>
-<rect x="0.0" y="0" width="2400.0" height="694.0" fill="url(#background)"  />
+<rect x="0.0" y="0" width="2400.0" height="1414.0" fill="url(#background)"  />
 <text id="title" x="1200.00" y="24" >Flame Graph</text>
-<text id="details" x="10.00" y="677" > </text>
+<text id="details" x="10.00" y="1397" > </text>
 <text id="unzoom" x="10.00" y="24" class="hide">Reset Zoom</text>
 <text id="search" x="2290.00" y="24" >Search</text>
 <text id="ignorecase" x="2374.00" y="24" >ic</text>
-<text id="matched" x="2290.00" y="677" > </text>
+<text id="matched" x="2290.00" y="1397" > </text>
 <g id="frames">
 <g >
-<title>getLight (1,032,737,708 samples, 19.28%)</title><rect x="1212.9" y="325" width="458.8" height="47.0" fill="rgb(240,163,39)" rx="2" ry="2" />
-<text  x="1215.89" y="351.5" >getLight</text>
+<title>elf_load (253,833 samples, 0.01%)</title><rect x="1836.8" y="661" width="0.2" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
+<text  x="1839.83" y="687.5" ></text>
 </g>
 <g >
-<title>Vector::dot (229,905,557 samples, 4.29%)</title><rect x="1318.2" y="229" width="102.1" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
-<text  x="1321.20" y="255.5" >Vector::dot</text>
+<title>all (2,952,052,872 samples, 100%)</title><rect x="10.0" y="1333" width="2380.0" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
+<text  x="13.00" y="1359.5" ></text>
 </g>
 <g >
-<title>Vector::operator* (93,442,640 samples, 1.74%)</title><rect x="2204.4" y="325" width="41.5" height="47.0" fill="rgb(233,131,31)" rx="2" ry="2" />
-<text  x="2207.41" y="351.5" >Vec..</text>
+<title>[unknown]  (48,405,597 samples, 1.64%)</title><rect x="1797.8" y="1141" width="39.0" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
+<text  x="1800.80" y="1167.5" >[un..</text>
 </g>
 <g >
-<title>Box::getLightIntersection (561,401,209 samples, 10.48%)</title><rect x="1212.9" y="277" width="249.4" height="47.0" fill="rgb(212,32,7)" rx="2" ry="2" />
-<text  x="1215.89" y="303.5" >Box::getLightIntersection</text>
+<title>__do_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="277" width="0.2" height="47.0" fill="rgb(221,74,17)" rx="2" ry="2" />
+<text  x="1839.83" y="303.5" ></text>
 </g>
 <g >
-<title>Vector::operator* (42,744,588 samples, 0.80%)</title><rect x="1172.8" y="229" width="19.0" height="47.0" fill="rgb(233,131,31)" rx="2" ry="2" />
-<text  x="1175.82" y="255.5" ></text>
+<title>__x64_sys_execve (253,833 samples, 0.01%)</title><rect x="1836.8" y="1045" width="0.2" height="47.0" fill="rgb(247,193,46)" rx="2" ry="2" />
+<text  x="1839.83" y="1071.5" ></text>
 </g>
 <g >
-<title>Vector::operator+ (142,534,559 samples, 2.66%)</title><rect x="1608.4" y="277" width="63.3" height="47.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="1611.39" y="303.5" >Vector..</text>
+<title>bprm_execve.part.0 (253,833 samples, 0.01%)</title><rect x="1836.8" y="901" width="0.2" height="47.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="1839.83" y="927.5" ></text>
 </g>
 <g >
-<title>Plane::solveScalers (141,759,415 samples, 2.65%)</title><rect x="1255.2" y="229" width="63.0" height="47.0" fill="rgb(206,4,1)" rx="2" ry="2" />
-<text  x="1258.22" y="255.5" >Plane:..</text>
+<title>exec_binprm (253,833 samples, 0.01%)</title><rect x="1836.8" y="853" width="0.2" height="47.0" fill="rgb(244,180,43)" rx="2" ry="2" />
+<text  x="1839.83" y="879.5" ></text>
 </g>
 <g >
-<title>Vector::operator+ (46,772,330 samples, 0.87%)</title><rect x="1420.3" y="229" width="20.8" height="47.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="1423.34" y="255.5" ></text>
+<title>solveScalers (42,011,340 samples, 1.42%)</title><rect x="2356.1" y="1189" width="33.9" height="47.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="2359.13" y="1215.5" >so..</text>
 </g>
 <g >
-<title>Vector::operator+ (137,855,343 samples, 2.57%)</title><rect x="2245.9" y="325" width="61.3" height="47.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="2248.92" y="351.5" >Vector..</text>
+<title>load_elf_binary (253,833 samples, 0.01%)</title><rect x="1836.8" y="757" width="0.2" height="47.0" fill="rgb(223,83,20)" rx="2" ry="2" />
+<text  x="1839.83" y="783.5" ></text>
 </g>
 <g >
-<title>Vector::operator+ (42,105,465 samples, 0.79%)</title><rect x="1030.3" y="325" width="18.7" height="47.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="1033.28" y="351.5" ></text>
+<title>alloc_pages (253,833 samples, 0.01%)</title><rect x="1836.8" y="181" width="0.2" height="47.0" fill="rgb(210,25,6)" rx="2" ry="2" />
+<text  x="1839.83" y="207.5" ></text>
 </g>
 <g >
-<title>do_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="133" width="0.1" height="47.0" fill="rgb(248,200,47)" rx="2" ry="2" />
-<text  x="13.00" y="159.5" ></text>
+<title>do_user_addr_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="517" width="0.2" height="47.0" fill="rgb(228,108,25)" rx="2" ry="2" />
+<text  x="1839.83" y="543.5" ></text>
 </g>
 <g >
-<title>Vector::Vector (96,598,763 samples, 1.80%)</title><rect x="2264.3" y="277" width="42.9" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="2267.25" y="303.5" >Vect..</text>
+<title>do_execveat_common.isra.0 (253,833 samples, 0.01%)</title><rect x="1836.8" y="997" width="0.2" height="47.0" fill="rgb(231,123,29)" rx="2" ry="2" />
+<text  x="1839.83" y="1023.5" ></text>
 </g>
 <g >
-<title>Vector::dot (46,497,867 samples, 0.87%)</title><rect x="347.4" y="277" width="20.6" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
-<text  x="350.39" y="303.5" ></text>
+<title>Vector::dot (933,502,187 samples, 31.62%)</title><rect x="424.5" y="1189" width="752.6" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
+<text  x="427.54" y="1215.5" >Vector::dot</text>
 </g>
 <g >
-<title>getLight (1,430,261,460 samples, 26.70%)</title><rect x="1671.7" y="373" width="635.5" height="47.0" fill="rgb(240,163,39)" rx="2" ry="2" />
-<text  x="1674.72" y="399.5" >getLight</text>
+<title>__memcg_kmem_charge_page (253,833 samples, 0.01%)</title><rect x="1836.8" y="37" width="0.2" height="47.0" fill="rgb(217,57,13)" rx="2" ry="2" />
+<text  x="1839.83" y="63.5" ></text>
 </g>
 <g >
-<title>calcColor (274,310,041 samples, 5.12%)</title><rect x="1069.9" y="325" width="121.9" height="47.0" fill="rgb(209,19,4)" rx="2" ry="2" />
-<text  x="1072.94" y="351.5" >calcColor</text>
+<title>Vector::mag2 (189,127,412 samples, 6.41%)</title><rect x="1177.1" y="1189" width="152.5" height="47.0" fill="rgb(244,182,43)" rx="2" ry="2" />
+<text  x="1180.15" y="1215.5" >Vector::mag2</text>
 </g>
 <g >
-<title>Vector::Vector (46,865,076 samples, 0.87%)</title><rect x="474.1" y="277" width="20.9" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="477.13" y="303.5" ></text>
+<title>handle_pte_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="373" width="0.2" height="47.0" fill="rgb(217,57,13)" rx="2" ry="2" />
+<text  x="1839.83" y="399.5" ></text>
 </g>
 <g >
-<title>Vector::operator* (47,801,459 samples, 0.89%)</title><rect x="2062.5" y="277" width="21.2" height="47.0" fill="rgb(233,131,31)" rx="2" ry="2" />
-<text  x="2065.50" y="303.5" ></text>
+<title>__handle_mm_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="421" width="0.2" height="47.0" fill="rgb(207,9,2)" rx="2" ry="2" />
+<text  x="1839.83" y="447.5" ></text>
 </g>
 <g >
-<title>Vector::Vector (136,864,756 samples, 2.55%)</title><rect x="2103.0" y="229" width="60.8" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="2106.01" y="255.5" >Vector..</text>
+<title>Vector::operator* (337,026,422 samples, 11.42%)</title><rect x="1329.6" y="1189" width="271.7" height="47.0" fill="rgb(233,131,31)" rx="2" ry="2" />
+<text  x="1332.63" y="1215.5" >Vector::operator*</text>
 </g>
 <g >
-<title>Box::getLightIntersection (44,220,779 samples, 0.83%)</title><rect x="1153.2" y="229" width="19.6" height="47.0" fill="rgb(212,32,7)" rx="2" ry="2" />
-<text  x="1156.18" y="255.5" ></text>
+<title>handle_mm_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="469" width="0.2" height="47.0" fill="rgb(234,135,32)" rx="2" ry="2" />
+<text  x="1839.83" y="495.5" ></text>
 </g>
 <g >
-<title>Vector::dot (45,244,203 samples, 0.84%)</title><rect x="991.1" y="325" width="20.1" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
-<text  x="994.07" y="351.5" ></text>
+<title>do_syscall_64 (253,833 samples, 0.01%)</title><rect x="1836.8" y="1141" width="0.2" height="47.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="1839.83" y="1167.5" ></text>
 </g>
 <g >
-<title>Box::getIntersection (230,631,818 samples, 4.31%)</title><rect x="869.3" y="325" width="102.5" height="47.0" fill="rgb(217,59,14)" rx="2" ry="2" />
-<text  x="872.31" y="351.5" >Box::getInte..</text>
+<title>Plane::getIntersection (329,355,313 samples, 11.16%)</title><rect x="159.0" y="1189" width="265.5" height="47.0" fill="rgb(232,126,30)" rx="2" ry="2" />
+<text  x="162.01" y="1215.5" >Plane::getIntersection</text>
 </g>
 <g >
-<title>Plane::solveScalers (48,802,782 samples, 0.91%)</title><rect x="537.2" y="325" width="21.7" height="47.0" fill="rgb(206,4,1)" rx="2" ry="2" />
-<text  x="540.24" y="351.5" >P..</text>
+<title>bprm_execve (253,833 samples, 0.01%)</title><rect x="1836.8" y="949" width="0.2" height="47.0" fill="rgb(218,61,14)" rx="2" ry="2" />
+<text  x="1839.83" y="975.5" ></text>
 </g>
 <g >
-<title>Vector::mag (42,999,486 samples, 0.80%)</title><rect x="1011.2" y="277" width="19.1" height="47.0" fill="rgb(217,58,14)" rx="2" ry="2" />
-<text  x="1014.17" y="303.5" ></text>
+<title>Box::getIntersection (184,823,074 samples, 6.26%)</title><rect x="10.0" y="1189" width="149.0" height="47.0" fill="rgb(217,59,14)" rx="2" ry="2" />
+<text  x="13.00" y="1215.5" >Box::getIntersection</text>
 </g>
 <g >
-<title>[unknown]  (304,877 samples, 0.01%)</title><rect x="10.0" y="469" width="0.1" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
-<text  x="13.00" y="495.5" ></text>
+<title>[unknown]  (48,405,597 samples, 1.64%)</title><rect x="1797.8" y="1093" width="39.0" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
+<text  x="1800.80" y="1119.5" >[un..</text>
 </g>
 <g >
-<title>[unknown]  (47,170,623 samples, 0.88%)</title><rect x="1049.0" y="325" width="20.9" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
-<text  x="1051.98" y="351.5" ></text>
+<title>__alloc_pages (253,833 samples, 0.01%)</title><rect x="1836.8" y="85" width="0.2" height="47.0" fill="rgb(233,129,30)" rx="2" ry="2" />
+<text  x="1839.83" y="111.5" ></text>
 </g>
 <g >
-<title>Box::getIntersection (625,895,979 samples, 11.68%)</title><rect x="259.2" y="373" width="278.0" height="47.0" fill="rgb(217,59,14)" rx="2" ry="2" />
-<text  x="262.17" y="399.5" >Box::getIntersection</text>
+<title>search_binary_handler (253,833 samples, 0.01%)</title><rect x="1836.8" y="805" width="0.2" height="47.0" fill="rgb(208,14,3)" rx="2" ry="2" />
+<text  x="1839.83" y="831.5" ></text>
 </g>
 <g >
-<title>Vector::Vector (48,266,074 samples, 0.90%)</title><rect x="411.2" y="325" width="21.5" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="414.21" y="351.5" >V..</text>
+<title>main.exe (2,952,051,369 samples, 100.00%)</title><rect x="10.0" y="1285" width="2380.0" height="47.0" fill="rgb(216,53,12)" rx="2" ry="2" />
+<text  x="13.00" y="1311.5" >main.exe</text>
 </g>
 <g >
-<title>Vector::Vector (47,025,965 samples, 0.88%)</title><rect x="950.9" y="229" width="20.9" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="953.89" y="255.5" ></text>
+<title>entry_SYSCALL_64_after_hwframe (253,833 samples, 0.01%)</title><rect x="1836.8" y="1189" width="0.2" height="47.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1839.83" y="1215.5" ></text>
 </g>
 <g >
-<title>handle_pte_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="181" width="0.1" height="47.0" fill="rgb(217,57,13)" rx="2" ry="2" />
-<text  x="13.00" y="207.5" ></text>
+<title>do_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="325" width="0.2" height="47.0" fill="rgb(248,200,47)" rx="2" ry="2" />
+<text  x="1839.83" y="351.5" ></text>
 </g>
 <g >
-<title>Ray::Ray (91,363,099 samples, 1.71%)</title><rect x="2163.8" y="325" width="40.6" height="47.0" fill="rgb(238,153,36)" rx="2" ry="2" />
-<text  x="2166.82" y="351.5" >Ray..</text>
+<title>Vector::operator+ (98,123,035 samples, 3.32%)</title><rect x="1601.3" y="1189" width="79.2" height="47.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="1604.34" y="1215.5" >Vector::o..</text>
 </g>
 <g >
-<title>Vector::operator* (140,215,316 samples, 2.62%)</title><rect x="432.7" y="325" width="62.3" height="47.0" fill="rgb(233,131,31)" rx="2" ry="2" />
-<text  x="435.66" y="351.5" >Vector..</text>
+<title>alloc_pages_mpol (253,833 samples, 0.01%)</title><rect x="1836.8" y="133" width="0.2" height="47.0" fill="rgb(254,227,54)" rx="2" ry="2" />
+<text  x="1839.83" y="159.5" ></text>
 </g>
 <g >
-<title>[unknown] (5,356,553,687 samples, 99.99%)</title><rect x="10.1" y="517" width="2379.9" height="47.0" fill="rgb(210,24,5)" rx="2" ry="2" />
-<text  x="13.14" y="543.5" >[unknown]</text>
+<title>pte_alloc_one (253,833 samples, 0.01%)</title><rect x="1836.8" y="229" width="0.2" height="47.0" fill="rgb(252,217,51)" rx="2" ry="2" />
+<text  x="1839.83" y="255.5" ></text>
 </g>
 <g >
-<title>Vector::Vector (48,349,200 samples, 0.90%)</title><rect x="389.7" y="277" width="21.5" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="392.73" y="303.5" >V..</text>
+<title>exc_page_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="565" width="0.2" height="47.0" fill="rgb(212,35,8)" rx="2" ry="2" />
+<text  x="1839.83" y="591.5" ></text>
 </g>
 <g >
-<title>Vector::operator- (48,292,697 samples, 0.90%)</title><rect x="515.8" y="325" width="21.4" height="47.0" fill="rgb(214,42,10)" rx="2" ry="2" />
-<text  x="518.79" y="351.5" >V..</text>
+<title>x64_sys_call (253,833 samples, 0.01%)</title><rect x="1836.8" y="1093" width="0.2" height="47.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1839.83" y="1119.5" ></text>
 </g>
 <g >
-<title>refresh (5,356,553,687 samples, 99.99%)</title><rect x="10.1" y="469" width="2379.9" height="47.0" fill="rgb(212,32,7)" rx="2" ry="2" />
-<text  x="13.14" y="495.5" >refresh</text>
+<title>getLight (548,924,853 samples, 18.59%)</title><rect x="1837.0" y="1189" width="442.6" height="47.0" fill="rgb(240,163,39)" rx="2" ry="2" />
+<text  x="1840.03" y="1215.5" >getLight</text>
 </g>
 <g >
-<title>Vector::Vector (46,899,537 samples, 0.88%)</title><rect x="495.0" y="277" width="20.8" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="497.95" y="303.5" ></text>
+<title>refresh (94,942,156 samples, 3.22%)</title><rect x="2279.6" y="1189" width="76.5" height="47.0" fill="rgb(212,32,7)" rx="2" ry="2" />
+<text  x="2282.58" y="1215.5" >refresh</text>
 </g>
 <g >
-<title>Vector::operator- (47,025,965 samples, 0.88%)</title><rect x="950.9" y="277" width="20.9" height="47.0" fill="rgb(214,42,10)" rx="2" ry="2" />
-<text  x="953.89" y="303.5" ></text>
+<title>asm_exc_page_fault (253,833 samples, 0.01%)</title><rect x="1836.8" y="613" width="0.2" height="47.0" fill="rgb(225,93,22)" rx="2" ry="2" />
+<text  x="1839.83" y="639.5" ></text>
 </g>
 <g >
-<title>finish_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="85" width="0.1" height="47.0" fill="rgb(220,72,17)" rx="2" ry="2" />
-<text  x="13.00" y="111.5" ></text>
+<title>load_elf_interp.constprop.0 (253,833 samples, 0.01%)</title><rect x="1836.8" y="709" width="0.2" height="47.0" fill="rgb(224,91,21)" rx="2" ry="2" />
+<text  x="1839.83" y="735.5" ></text>
 </g>
 <g >
-<title>Plane::getColor (48,802,782 samples, 0.91%)</title><rect x="537.2" y="373" width="21.7" height="47.0" fill="rgb(241,169,40)" rx="2" ry="2" />
-<text  x="540.24" y="399.5" >P..</text>
+<title>[unknown] (2,952,051,369 samples, 100.00%)</title><rect x="10.0" y="1237" width="2380.0" height="47.0" fill="rgb(210,24,5)" rx="2" ry="2" />
+<text  x="13.00" y="1263.5" >[unknown]</text>
 </g>
 <g >
-<title>calcColor (5,310,233,973 samples, 99.13%)</title><rect x="30.7" y="421" width="2359.3" height="47.0" fill="rgb(209,19,4)" rx="2" ry="2" />
-<text  x="33.71" y="447.5" >calcColor</text>
+<title>calcColor (145,240,693 samples, 4.92%)</title><rect x="1719.7" y="1189" width="117.1" height="47.0" fill="rgb(209,19,4)" rx="2" ry="2" />
+<text  x="1722.73" y="1215.5" >calcColor</text>
 </g>
 <g >
-<title>all (5,356,860,405 samples, 100%)</title><rect x="10.0" y="613" width="2380.0" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="13.00" y="639.5" ></text>
-</g>
-<g >
-<title>Vector::dot (44,220,779 samples, 0.83%)</title><rect x="1153.2" y="181" width="19.6" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
-<text  x="1156.18" y="207.5" ></text>
-</g>
-<g >
-<title>asm_exc_page_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="421" width="0.1" height="47.0" fill="rgb(225,93,22)" rx="2" ry="2" />
-<text  x="13.00" y="447.5" ></text>
-</g>
-<g >
-<title>Ray::Ray (90,373,884 samples, 1.69%)</title><rect x="1462.3" y="277" width="40.2" height="47.0" fill="rgb(238,153,36)" rx="2" ry="2" />
-<text  x="1465.31" y="303.5" >Ray..</text>
-</g>
-<g >
-<title>set_pte_range (304,877 samples, 0.01%)</title><rect x="10.0" y="37" width="0.1" height="47.0" fill="rgb(224,90,21)" rx="2" ry="2" />
-<text  x="13.00" y="63.5" ></text>
-</g>
-<g >
-<title>getLight (86,965,367 samples, 1.62%)</title><rect x="1153.2" y="277" width="38.6" height="47.0" fill="rgb(240,163,39)" rx="2" ry="2" />
-<text  x="1156.18" y="303.5" >get..</text>
-</g>
-<g >
-<title>Plane::solveScalers (97,147,015 samples, 1.81%)</title><rect x="368.0" y="325" width="43.2" height="47.0" fill="rgb(206,4,1)" rx="2" ry="2" />
-<text  x="371.05" y="351.5" >Plan..</text>
-</g>
-<g >
-<title>[unknown]  (48,597,558 samples, 0.91%)</title><rect x="1131.6" y="277" width="21.6" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
-<text  x="1134.59" y="303.5" >[..</text>
-</g>
-<g >
-<title>ImageTexture::getColor (43,417,802 samples, 0.81%)</title><rect x="971.8" y="325" width="19.3" height="47.0" fill="rgb(211,30,7)" rx="2" ry="2" />
-<text  x="974.78" y="351.5" ></text>
-</g>
-<g >
-<title>Vector::Vector (47,690,598 samples, 0.89%)</title><rect x="1441.1" y="181" width="21.2" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="1444.12" y="207.5" ></text>
-</g>
-<g >
-<title>Vector::operator+ (46,899,537 samples, 0.88%)</title><rect x="495.0" y="325" width="20.8" height="47.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="497.95" y="351.5" ></text>
-</g>
-<g >
-<title>fix (47,428,227 samples, 0.89%)</title><rect x="1191.8" y="325" width="21.1" height="47.0" fill="rgb(251,212,50)" rx="2" ry="2" />
-<text  x="1194.81" y="351.5" ></text>
-</g>
-<g >
-<title>Vector::dot (48,221,354 samples, 0.90%)</title><rect x="1502.5" y="229" width="21.4" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
-<text  x="1505.46" y="255.5" >V..</text>
-</g>
-<g >
-<title>Vector::dot (416,387,198 samples, 7.77%)</title><rect x="1877.5" y="277" width="185.0" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
-<text  x="1880.51" y="303.5" >Vector::dot</text>
-</g>
-<g >
-<title>Box::getLightIntersection (829,258,674 samples, 15.48%)</title><rect x="1795.4" y="325" width="368.4" height="47.0" fill="rgb(212,32,7)" rx="2" ry="2" />
-<text  x="1798.39" y="351.5" >Box::getLightIntersection</text>
-</g>
-<g >
-<title>Vector::operator- (136,864,756 samples, 2.55%)</title><rect x="2103.0" y="277" width="60.8" height="47.0" fill="rgb(214,42,10)" rx="2" ry="2" />
-<text  x="2106.01" y="303.5" >Vector..</text>
-</g>
-<g >
-<title>Sphere::getLightIntersection (48,221,354 samples, 0.90%)</title><rect x="1502.5" y="277" width="21.4" height="47.0" fill="rgb(207,13,3)" rx="2" ry="2" />
-<text  x="1505.46" y="303.5" >S..</text>
-</g>
-<g >
-<title>[unknown]  (304,877 samples, 0.01%)</title><rect x="10.0" y="517" width="0.1" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
-<text  x="13.00" y="543.5" ></text>
-</g>
-<g >
-<title>Vector::operator+ (43,368,778 samples, 0.81%)</title><rect x="2083.7" y="277" width="19.3" height="47.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="2086.74" y="303.5" ></text>
-</g>
-<g >
-<title>main.exe (5,356,858,564 samples, 100.00%)</title><rect x="10.0" y="565" width="2380.0" height="47.0" fill="rgb(216,53,12)" rx="2" ry="2" />
-<text  x="13.00" y="591.5" >main.exe</text>
-</g>
-<g >
-<title>Plane::getIntersection (46,497,867 samples, 0.87%)</title><rect x="347.4" y="325" width="20.6" height="47.0" fill="rgb(232,126,30)" rx="2" ry="2" />
-<text  x="350.39" y="351.5" ></text>
-</g>
-<g >
-<title>Vector::operator- (47,690,598 samples, 0.89%)</title><rect x="1441.1" y="229" width="21.2" height="47.0" fill="rgb(214,42,10)" rx="2" ry="2" />
-<text  x="1444.12" y="255.5" ></text>
-</g>
-<g >
-<title>[unknown]  (46,644,475 samples, 0.87%)</title><rect x="622.3" y="325" width="20.8" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
-<text  x="625.33" y="351.5" ></text>
-</g>
-<g >
-<title>Vector::operator* (190,206,702 samples, 3.55%)</title><rect x="1523.9" y="277" width="84.5" height="47.0" fill="rgb(233,131,31)" rx="2" ry="2" />
-<text  x="1526.89" y="303.5" >Vector::o..</text>
-</g>
-<g >
-<title>Vector::dot (48,701,406 samples, 0.91%)</title><rect x="929.3" y="229" width="21.6" height="47.0" fill="rgb(251,213,51)" rx="2" ry="2" />
-<text  x="932.25" y="255.5" >V..</text>
-</g>
-<g >
-<title>Vector::Vector (46,319,714 samples, 0.86%)</title><rect x="10.1" y="421" width="20.6" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="13.14" y="447.5" ></text>
-</g>
-<g >
-<title>handle_mm_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="277" width="0.1" height="47.0" fill="rgb(234,135,32)" rx="2" ry="2" />
-<text  x="13.00" y="303.5" ></text>
-</g>
-<g >
-<title>Plane::getIntersection (95,734,715 samples, 1.79%)</title><rect x="908.4" y="277" width="42.5" height="47.0" fill="rgb(232,126,30)" rx="2" ry="2" />
-<text  x="911.35" y="303.5" >Plan..</text>
-</g>
-<g >
-<title>[unknown]  (189,343,045 samples, 3.53%)</title><rect x="558.9" y="373" width="84.2" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
-<text  x="561.93" y="399.5" >[unknown] </text>
-</g>
-<g >
-<title>calcColor (2,315,313,859 samples, 43.22%)</title><rect x="643.1" y="373" width="1028.6" height="47.0" fill="rgb(209,19,4)" rx="2" ry="2" />
-<text  x="646.05" y="399.5" >calcColor</text>
-</g>
-<g >
-<title>exc_page_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="373" width="0.1" height="47.0" fill="rgb(212,35,8)" rx="2" ry="2" />
-<text  x="13.00" y="399.5" ></text>
-</g>
-<g >
-<title>__handle_mm_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="229" width="0.1" height="47.0" fill="rgb(207,9,2)" rx="2" ry="2" />
-<text  x="13.00" y="255.5" ></text>
-</g>
-<g >
-<title>[unknown]  (47,170,623 samples, 0.88%)</title><rect x="1049.0" y="277" width="20.9" height="47.0" fill="rgb(253,223,53)" rx="2" ry="2" />
-<text  x="1051.98" y="303.5" ></text>
-</g>
-<g >
-<title>Vector::Vector (95,300,543 samples, 1.78%)</title><rect x="1629.4" y="229" width="42.3" height="47.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="1632.38" y="255.5" >Vec..</text>
-</g>
-<g >
-<title>do_user_addr_fault (304,877 samples, 0.01%)</title><rect x="10.0" y="325" width="0.1" height="47.0" fill="rgb(228,108,25)" rx="2" ry="2" />
-<text  x="13.00" y="351.5" ></text>
-</g>
-<g >
-<title>Vector::normalize (42,999,486 samples, 0.80%)</title><rect x="1011.2" y="325" width="19.1" height="47.0" fill="rgb(252,218,52)" rx="2" ry="2" />
-<text  x="1014.17" y="351.5" ></text>
-</g>
-<g >
-<title>insertionSort (186,424,798 samples, 3.48%)</title><rect x="2307.2" y="373" width="82.8" height="47.0" fill="rgb(248,200,48)" rx="2" ry="2" />
-<text  x="2310.17" y="399.5" >insertion..</text>
+<title>Vector::operator- (48,721,051 samples, 1.65%)</title><rect x="1680.5" y="1189" width="39.2" height="47.0" fill="rgb(214,42,10)" rx="2" ry="2" />
+<text  x="1683.45" y="1215.5" >Vec..</text>
 </g>
 </g>
 </svg>
