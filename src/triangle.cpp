@@ -31,10 +31,38 @@ Triangle::Triangle(Vector c, Vector b, Vector a, Texture* t):Plane(Vector(0,0,0)
    up.y = ycos*zcos+xsin*ysin*zsin;
    up.z = -xcos*ysin;
    Vector temp = vect.cross(right);
+   denom = right.z * up.y * vect.x - right.y * up.z * vect.x
+                 - right.z * up.x * vect.y + right.x * up.z * vect.y
+                 + right.y * up.x * vect.z - right.x * up.y * vect.z;
+   // right components multiplied with up and vect components
+   v1xv2y = right.x * up.y;
+   v1xv2z = right.x * up.z;
+   v1xv3y = right.x * vect.y;
+   v1xv3z = right.x * vect.z;
+   
+   v1yv2x = right.y * up.x;
+   v1yv2z = right.y * up.z;
+   v1yv3x = right.y * vect.x;
+   v1yv3z = right.y * vect.z;
+   
+   v1zv2x = right.z * up.x;
+   v1zv2y = right.z * up.y;
+   v1zv3x = right.z * vect.x;
+   v1zv3y = right.z * vect.y;
+   
+   // up components multiplied with vect components
+   v2xv3y = up.x * vect.y;
+   v2xv3z = up.x * vect.z;
+   
+   v2yv3x = up.y * vect.x;
+   v2yv3z = up.y * vect.z;
+   
+   v2zv3x = up.z * vect.x;
+   v2zv3y = up.z * vect.y;
    Vector np = solveScalers(a-c);
    textureY = np.y;
    thirdX = np.x;
-   
+
    d = -vect.dot(center);
 }
 

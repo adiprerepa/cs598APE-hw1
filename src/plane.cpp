@@ -71,6 +71,9 @@ void Plane::setYaw(double a){
    right.x = xcos*zcos;
    right.y = -xcos*zsin;
    right.z = -xsin;
+   denom = right.z * up.y * vect.x - right.y * up.z * vect.x
+                 - right.z * up.x * vect.y + right.x * up.z * vect.y
+                 + right.y * up.x * vect.z - right.x * up.y * vect.z;
    d = -vect.dot(center);
 }
 
@@ -84,6 +87,9 @@ void Plane::setPitch(double b){
    up.x = -xsin*ysin*zcos+ycos*zsin;
    up.y = ycos*zcos+xsin*ysin*zsin;
    up.z = -xcos*ysin;
+   denom = right.z * up.y * vect.x - right.y * up.z * vect.x
+                 - right.z * up.x * vect.y + right.x * up.z * vect.y
+                 + right.y * up.x * vect.z - right.x * up.y * vect.z;
    d = -vect.dot(center);
 }
 
@@ -100,6 +106,9 @@ void Plane::setRoll(double c){
    right.x = xcos*zcos;
    right.y = -xcos*zsin;
    //right.z = -xsin;
+   denom = right.z * up.y * vect.x - right.y * up.z * vect.x
+                 - right.z * up.x * vect.y + right.x * up.z * vect.y
+                 + right.y * up.x * vect.z - right.x * up.y * vect.z;
    d = -vect.dot(center);
 }
 
