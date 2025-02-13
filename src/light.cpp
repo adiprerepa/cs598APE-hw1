@@ -105,34 +105,44 @@ void Autonoma::removeLight(LightNode* s){
    free(s);
 }
 
-void getLight(double* tColor, Autonoma* aut, Vector point, Vector norm, unsigned char flip){
+void getLight(double* tColor, Autonoma* aut, Vector point, Vector norm, unsigned char flip) {
    tColor[0] = tColor[1] = tColor[2] = 0.;
-   LightNode *t = aut->lightStart;
-   while(t!=NULL){
-      double lightColor[3];     
-      lightColor[0] = t->data->color[0]/255.;
-      lightColor[1] = t->data->color[1]/255.;
-      lightColor[2] = t->data->color[2]/255.;
+   
+   // Pre-compute norm magnitude once since it's used repeatedly
+   const double normMag = norm.mag();
+   if(normMag < 1e-6) return; // Early exit if normal is too small
+   const double normMagInv = 1.0/normMag; // Precompute inverse for division
+
+   for(LightNode* t = aut->lightStart; t != NULL; t = t->next) {
+      // Calculate light ray vector first to enable early rejection
       Vector ra = t->data->center-point;
-      ShapeNode* shapeIter = aut->listStart;
+      const double raMag = ra.mag();
+      if(raMag < 1e-6) continue; // Skip if light source too close
+      const double raMagInv = 1.0/raMag; // Precompute inverse
+
+      // Calculate dot product early for potential early rejection
+      double perc = norm.dot(ra) * (raMagInv * normMagInv); // Combined division
+      if(flip && perc < 0) perc = -perc;
+      if(perc <= 0) continue; // Skip if light is behind surface
+
+      // Convert colors to doubles once
+      const double r = t->data->color[0]/255.;
+      const double g = t->data->color[1]/255.; 
+      const double b = t->data->color[2]/255.;
+      double lightColor[3] = {r, g, b};
+
+      // Check for occlusion with early exit
       bool hit = false;
-      while(!hit && shapeIter!=NULL){
-        hit = shapeIter->data->getLightIntersection(Ray(point+ra*.01, ra), lightColor);
-         shapeIter = shapeIter->next;
+      const Ray shadowRay(point+ra*0.01, ra);
+      for(ShapeNode* shapeIter = aut->listStart; !hit && shapeIter != NULL; shapeIter = shapeIter->next) {
+         hit = shapeIter->data->getLightIntersection(shadowRay, lightColor);
       }
-      double perc = (norm.dot(ra)/(ra.mag()*norm.mag()));
-      if(!hit){
-      if(flip && perc<0) perc=-perc;
-        if(perc>0){
       
-         tColor[0]+= perc*(lightColor[0]);
-         tColor[1]+= perc*(lightColor[0]);
-         tColor[2]+= perc*(lightColor[0]);
-         if(tColor[0]>1.) tColor[0] = 1.;
-         if(tColor[1]>1.) tColor[1] = 1.;
-         if(tColor[2]>1.) tColor[2] = 1.;
-        }
+      if(!hit) {
+         // Add light contribution with combined multiply
+         tColor[0] = fmin(1.0, tColor[0] + perc*lightColor[0]);
+         tColor[1] = fmin(1.0, tColor[1] + perc*lightColor[1]); 
+         tColor[2] = fmin(1.0, tColor[2] + perc*lightColor[2]);
       }
-      t =t->next;
    }
 }
