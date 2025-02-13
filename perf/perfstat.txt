@@ -1,22 +1,22 @@
-# started on Wed Feb 12 23:38:06 2025
+# started on Thu Feb 13 00:23:30 2025
 
 
  Performance counter stats for './main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500':
 
-            626.74 msec task-clock                       #    0.999 CPUs utilized             
-                 4      context-switches                 #    6.382 /sec                      
-                 2      cpu-migrations                   #    3.191 /sec                      
-               329      page-faults                      #  524.941 /sec                      
-        2945356332      cycles                           #    4.700 GHz                       
-          73013954      stalled-cycles-frontend          #    2.48% frontend cycles idle      
-        6740723346      instructions                     #    2.29  insn per cycle            
+            559.94 msec task-clock                       #    0.999 CPUs utilized             
+                 1      context-switches                 #    1.786 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               325      page-faults                      #  580.422 /sec                      
+        2659202884      cycles                           #    4.749 GHz                       
+          47036485      stalled-cycles-frontend          #    1.77% frontend cycles idle      
+        6102058501      instructions                     #    2.29  insn per cycle            
                                                   #    0.01  stalled cycles per insn   
-         820769790      branches                         #    1.310 G/sec                     
-            552638      branch-misses                    #    0.07% of all branches           
+         796635522      branches                         #    1.423 G/sec                     
+            510119      branch-misses                    #    0.06% of all branches           
 
-       0.627456578 seconds time elapsed
+       0.560458520 seconds time elapsed
 
-       0.622347000 seconds user
-       0.005002000 seconds sys
+       0.558477000 seconds user
+       0.002001000 seconds sys
 
 
