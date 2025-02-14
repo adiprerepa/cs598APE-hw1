@@ -1,22 +1,22 @@
-# started on Fri Feb 14 02:04:58 2025
+# started on Fri Feb 14 03:36:41 2025
 
 
- Performance counter stats for './main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/sphere.mp4':
+ Performance counter stats for './main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/elephant.mp4':
 
-         570440.33 msec task-clock                       #    1.000 CPUs utilized             
-              8846      context-switches                 #   15.507 /sec                      
-               373      cpu-migrations                   #    0.654 /sec                      
-           2923171      page-faults                      #    5.124 K/sec                     
-     2715984469758      cycles                           #    4.761 GHz                       
-       47485075594      stalled-cycles-frontend          #    1.75% frontend cycles idle      
-     6744269924536      instructions                     #    2.48  insn per cycle            
-                                                  #    0.01  stalled cycles per insn   
-     1333433874728      branches                         #    2.338 G/sec                     
-        2385429441      branch-misses                    #    0.18% of all branches           
+        1430966.65 msec task-clock                       #    1.000 CPUs utilized             
+             18218      context-switches                 #   12.731 /sec                      
+               617      cpu-migrations                   #    0.431 /sec                      
+           2923160      page-faults                      #    2.043 K/sec                     
+     6774283436474      cycles                           #    4.734 GHz                       
+       67980467821      stalled-cycles-frontend          #    1.00% frontend cycles idle      
+    26257745357556      instructions                     #    3.88  insn per cycle            
+                                                  #    0.00  stalled cycles per insn   
+     1345344823012      branches                         #  940.165 M/sec                     
+        2668925374      branch-misses                    #    0.20% of all branches           
 
-     570.530000447 seconds time elapsed
+    1431.173317513 seconds time elapsed
 
-     564.504468000 seconds user
-       5.906424000 seconds sys
+    1424.906026000 seconds user
+       5.999953000 seconds sys
 
 

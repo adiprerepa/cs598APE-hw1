@@ -1,22 +1,22 @@
-# started on Fri Feb 14 02:14:32 2025
+# started on Fri Feb 14 04:00:36 2025
 
 
- Performance counter stats for './main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/sphere.mp4':
+ Performance counter stats for './main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/globe.mp4':
 
-           1141.67 msec task-clock                       #    1.116 CPUs utilized             
-              7103      context-switches                 #    6.222 K/sec                     
-               201      cpu-migrations                   #  176.057 /sec                      
-             58581      page-faults                      #   51.312 K/sec                     
-        5031695923      cycles                           #    4.407 GHz                       
-         870859378      stalled-cycles-frontend          #   17.31% frontend cycles idle      
-        8150074335      instructions                     #    1.62  insn per cycle            
-                                                  #    0.11  stalled cycles per insn   
-        1148352774      branches                         #    1.006 G/sec                     
-          30800136      branch-misses                    #    2.68% of all branches           
+           1456.16 msec task-clock                       #    1.077 CPUs utilized             
+              7463      context-switches                 #    5.125 K/sec                     
+               207      cpu-migrations                   #  142.154 /sec                      
+             58590      page-faults                      #   40.236 K/sec                     
+        6762716845      cycles                           #    4.644 GHz                       
+        1048063864      stalled-cycles-frontend          #   15.50% frontend cycles idle      
+       11341803318      instructions                     #    1.68  insn per cycle            
+                                                  #    0.09  stalled cycles per insn   
+        1298305311      branches                         #  891.593 M/sec                     
+          30348141      branch-misses                    #    2.34% of all branches           
 
-       1.023375104 seconds time elapsed
+       1.352182082 seconds time elapsed
 
-       0.867618000 seconds user
-       0.277643000 seconds sys
+       1.197948000 seconds user
+       0.259339000 seconds sys
 
 
