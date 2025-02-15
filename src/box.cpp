@@ -1,14 +1,15 @@
 #include "box.h"
-
+#include "math.h"
 Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty):Plane(c, t, ya, pi, ro, tx, ty){}
 Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx):Plane(c, t, ya, pi, ro, tx,tx){}
 
 double Box::getIntersection(Ray ray){
    double time = Plane::getIntersection(ray);
-   Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*time-center);
    if(time==inf) 
       return time;
-   return ( ((dist.x>=0)?dist.x:-dist.x)>textureX/2 || ((dist.y>=0)?dist.y:-dist.y)>textureY/2 )?inf:time;
+   Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*time-center, denom);
+
+   return ( (std::abs(dist.x) * 2) > textureX || (std::abs(dist.y) * 2 ) > textureY ) ? inf : time;
 }
 
 bool Box::getLightIntersection(Ray ray, double* fill){
@@ -16,8 +17,9 @@ bool Box::getLightIntersection(Ray ray, double* fill){
    const double norm = vect.dot(ray.point)+d;
    const double r = -norm/t;
    if(r<=0. || r>=1.) return false;
-   Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*r-center);
+   Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*r-center, denom);
    if( ((dist.x>=0)?dist.x:-dist.x)>textureX/2 || ((dist.y>=0)?dist.y:-dist.y)>textureY/2 ) return false;
+   //    if( (std::abs(dist.x) * 2)>textureX || (std::abs(dist.y) * 2)>textureY ) return false;
 
    if(texture->opacity>1-1E-6) return true;   
    unsigned char temp[4];
