@@ -1,6 +1,7 @@
 #include "box.h"
 #include "bithack.h"
 
+#include "math.h"
 Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty):Plane(c, t, ya, pi, ro, tx, ty){}
 Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx):Plane(c, t, ya, pi, ro, tx,tx){}
 
@@ -8,7 +9,7 @@ double Box::getIntersection(Ray ray){
    double time = Plane::getIntersection(ray);
    if(time==inf) 
       return time;
-   Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*time-center);
+   Vector dist = solveScalers(ray.point+ray.vector*time-center);
    return (std::abs(dist.x)*2>textureX || std::abs(dist.y)*2>textureY)?inf:time;
 }
 
@@ -18,7 +19,7 @@ bool Box::getLightIntersection(Ray ray, double* fill){
    bool sameSign = !xor_sign_bit(norm, t);
    if (norm == 0 || sameSign || (t > 0. && -norm >= t) || (t < 0. && -norm <= t)) return false;
    const double r = -norm/t;
-   Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*r-center);
+   Vector dist = solveScalers(ray.point+ray.vector*r-center);
    if(std::abs(dist.x)*2>textureX || std::abs(dist.y)*2>textureY) return false;
 
    if(texture->opacity>1-1E-6) return true;   

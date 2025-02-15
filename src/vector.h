@@ -63,6 +63,10 @@ inline Vector operator*(const float a, const Vector& b) {
   return Vector(a * b.x, a * b.y, a * b.z);
 }
 
+  inline Vector operator/(const float a, const Vector b){
+   return Vector(a/b.x,a/b.y,a/b.z);
+  }
+
 inline Vector operator/(const int a, const Vector& b) {
   return Vector(a / b.x, a / b.y, a / b.z);
 }
