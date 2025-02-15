@@ -1,4 +1,5 @@
 #include "triangle.h"
+#include "bithack.h"
 
 Triangle::Triangle(Vector c, Vector b, Vector a, Texture* t):Plane(Vector(0,0,0), t, 0., 0., 0., 0., 0.){
    center = c;
@@ -43,7 +44,7 @@ double Triangle::getIntersection(Ray ray){
       return time;
    Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*time-center); 
    unsigned char tmp = (thirdX - dist.x) * textureY < (textureX-thirdX) * (dist.y - textureY);
-   return((tmp != (((*(unsigned long long*)&textureX ^ *(unsigned long long*)&dist.y) & 0x8000000000000000ULL) != 0)) 
+   return((tmp != !xor_sign_bit(thirdX, dist.y)) 
    || (tmp != (dist.x * textureY < thirdX * dist.y))) ? inf : time;
 }
 
