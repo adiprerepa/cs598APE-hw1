@@ -1,22 +1,22 @@
-# started on Sat Feb 15 21:35:01 2025
+# started on Sat Feb 15 21:38:33 2025
 
 
  Performance counter stats for './main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500':
 
-            554.20 msec task-clock                       #    0.998 CPUs utilized             
-                82      context-switches                 #  147.962 /sec                      
+            424.34 msec task-clock                       #    0.999 CPUs utilized             
+                 2      context-switches                 #    4.713 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               328      page-faults                      #  591.846 /sec                      
-        2592402838      cycles                           #    4.678 GHz                       
-          66745337      stalled-cycles-frontend          #    2.57% frontend cycles idle      
-        4636371404      instructions                     #    1.79  insn per cycle            
+               326      page-faults                      #  768.256 /sec                      
+        2005794013      cycles                           #    4.727 GHz                       
+          42723743      stalled-cycles-frontend          #    2.13% frontend cycles idle      
+        4212270304      instructions                     #    2.10  insn per cycle            
                                                   #    0.01  stalled cycles per insn   
-         424324792      branches                         #  765.655 M/sec                     
-            618975      branch-misses                    #    0.15% of all branches           
+         378311570      branches                         #  891.534 M/sec                     
+            500975      branch-misses                    #    0.13% of all branches           
 
-       0.555159784 seconds time elapsed
+       0.424951561 seconds time elapsed
 
-       0.550304000 seconds user
-       0.003994000 seconds sys
+       0.421940000 seconds user
+       0.002999000 seconds sys
 
 

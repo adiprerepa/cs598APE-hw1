@@ -1,22 +1,22 @@
-# started on Sat Feb 15 21:35:26 2025
+# started on Sat Feb 15 21:38:57 2025
 
 
  Performance counter stats for './main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/elephant.mp4':
 
-          22934.81 msec task-clock                       #    1.001 CPUs utilized             
-              1554      context-switches                 #   67.757 /sec                      
-               266      cpu-migrations                   #   11.598 /sec                      
-             18888      page-faults                      #  823.552 /sec                      
-      107343941792      cycles                           #    4.680 GHz                       
-        1199022392      stalled-cycles-frontend          #    1.12% frontend cycles idle      
-      214361422262      instructions                     #    2.00  insn per cycle            
+          22966.21 msec task-clock                       #    1.001 CPUs utilized             
+              1575      context-switches                 #   68.579 /sec                      
+               276      cpu-migrations                   #   12.018 /sec                      
+             18882      page-faults                      #  822.165 /sec                      
+      107586024266      cycles                           #    4.685 GHz                       
+        1293456431      stalled-cycles-frontend          #    1.20% frontend cycles idle      
+      213791856366      instructions                     #    1.99  insn per cycle            
                                                   #    0.01  stalled cycles per insn   
-       17090012426      branches                         #  745.156 M/sec                     
-          33495544      branch-misses                    #    0.20% of all branches           
+       17021871342      branches                         #  741.170 M/sec                     
+          39287126      branch-misses                    #    0.23% of all branches           
 
-      22.914914253 seconds time elapsed
+      22.953346017 seconds time elapsed
 
-      22.807000000 seconds user
-       0.126760000 seconds sys
+      22.852163000 seconds user
+       0.112868000 seconds sys
 
 
