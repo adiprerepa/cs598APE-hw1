@@ -1,22 +1,22 @@
-# started on Fri Feb 14 04:00:36 2025
+# started on Sat Feb 15 21:35:52 2025
 
 
  Performance counter stats for './main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/globe.mp4':
 
-           1456.16 msec task-clock                       #    1.077 CPUs utilized             
-              7463      context-switches                 #    5.125 K/sec                     
-               207      cpu-migrations                   #  142.154 /sec                      
-             58590      page-faults                      #   40.236 K/sec                     
-        6762716845      cycles                           #    4.644 GHz                       
-        1048063864      stalled-cycles-frontend          #   15.50% frontend cycles idle      
-       11341803318      instructions                     #    1.68  insn per cycle            
-                                                  #    0.09  stalled cycles per insn   
-        1298305311      branches                         #  891.593 M/sec                     
-          30348141      branch-misses                    #    2.34% of all branches           
+           1084.55 msec task-clock                       #    1.125 CPUs utilized             
+              7436      context-switches                 #    6.856 K/sec                     
+               299      cpu-migrations                   #  275.691 /sec                      
+             49167      page-faults                      #   45.334 K/sec                     
+        4794585740      cycles                           #    4.421 GHz                       
+         836481436      stalled-cycles-frontend          #   17.45% frontend cycles idle      
+        6620401149      instructions                     #    1.38  insn per cycle            
+                                                  #    0.13  stalled cycles per insn   
+         875073304      branches                         #  806.857 M/sec                     
+          29351106      branch-misses                    #    3.35% of all branches           
 
-       1.352182082 seconds time elapsed
+       0.964041692 seconds time elapsed
 
-       1.197948000 seconds user
-       0.259339000 seconds sys
+       0.823885000 seconds user
+       0.262864000 seconds sys
 
 
