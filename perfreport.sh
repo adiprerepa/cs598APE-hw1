@@ -19,10 +19,13 @@ while getopts "PEG" opt; do
   esac
 done
 
+# Set the performance output directory
+PERF_DIR=${PERF_OUT_LOCATION:-perf}
+
 make -j
-rm -rf perf && mkdir perf && chmod 777 perf
-cp main.exe perf/
-mkdir -p perf/pianoroom perf/elephant perf/globe
+rm -rf "$PERF_DIR" && mkdir -p "$PERF_DIR" && chmod 777 "$PERF_DIR"
+cp main.exe "$PERF_DIR/"
+mkdir -p "$PERF_DIR/pianoroom" "$PERF_DIR/elephant" "$PERF_DIR/globe"
 
 # Function to compare generated output with baseline
 compare_outputs() {
@@ -53,22 +56,22 @@ compare_outputs() {
 }
 
 if [ "$PIANOROOM" = true ]; then
-  perf record -o perf/pianoroom/perf.data -F 99 -g -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500
-  perf stat -o perf/pianoroom/perfstat.txt -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500
-  perf script -i perf/pianoroom/perf.data | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > perf/pianoroom/flamegraph.svg
+  perf record -o "$PERF_DIR/pianoroom/perf.data" -F 99 -g -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500
+  perf stat -o "$PERF_DIR/pianoroom/perfstat.txt" -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500
+  perf script -i "$PERF_DIR/pianoroom/perf.data" | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > "$PERF_DIR/pianoroom/flamegraph.svg"
   compare_outputs "PianoRoom" "pianoroom" "pianoroom"
 fi
 
 if [ "$ELEPHANT" = true ]; then
-  perf record -o perf/elephant/perf.data -F 99 -g -- ./main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/elephant.mp4
-  perf stat -o perf/elephant/perfstat.txt -- ./main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/elephant.mp4
-  perf script -i perf/elephant/perf.data | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > perf/elephant/flamegraph.svg
+  perf record -o "$PERF_DIR/elephant/perf.data" -F 99 -g -- ./main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/elephant.mp4
+  perf stat -o "$PERF_DIR/elephant/perfstat.txt" -- ./main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/elephant.mp4
+  perf script -i "$PERF_DIR/elephant/perf.data" | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > "$PERF_DIR/elephant/flamegraph.svg"
   compare_outputs "Elephant" "elephant" "elephant"
 fi
 
 if [ "$GLOBE" = true ]; then
-  perf record -o perf/globe/perf.data -F 99 -g -- ./main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/globe.mp4
-  perf stat -o perf/globe/perfstat.txt -- ./main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/globe.mp4
-  perf script -i perf/globe/perf.data | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > perf/globe/flamegraph.svg
+  perf record -o "$PERF_DIR/globe/perf.data" -F 99 -g -- ./main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/globe.mp4
+  perf stat -o "$PERF_DIR/globe/perfstat.txt" -- ./main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/globe.mp4
+  perf script -i "$PERF_DIR/globe/perf.data" | perl FlameGraph/stackcollapse-perf.pl | perl FlameGraph/flamegraph.pl --width 2400 --height 48 > "$PERF_DIR/globe/flamegraph.svg"
   compare_outputs "Globe" "globe" "globe"
 fi
