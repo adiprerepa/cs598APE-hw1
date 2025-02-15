@@ -57,7 +57,7 @@ bool Triangle::getLightIntersection(Ray ray, double* fill){
    Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*r-center);
    
    unsigned char tmp = (thirdX - dist.x) * textureY  < (textureX-thirdX) * (dist.y - textureY);
-   if ((tmp != (((*(unsigned long long*)&textureX ^ *(unsigned long long*)&dist.y) & 0x8000000000000000ULL) != 0)) 
+   if ((tmp != xor_sign_bit(textureX, dist.y)) 
    || (tmp != (dist.x * textureY < thirdX * dist.y))) return false;
    
    if(texture->opacity>1-1E-6) return true;   
