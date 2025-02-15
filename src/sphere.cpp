@@ -30,6 +30,13 @@ bool Sphere::getLightIntersection(Ray ray, double* fill){
    return false;
 }
 double Sphere::getIntersection(Ray ray){
+   // add a gaurd clause to check if ray is outside of sphere's bounding box
+   if (ray.point.x < center.x - radius && ray.vector.x < 0) return inf;
+   if (ray.point.x > center.x + radius && ray.vector.x > 0) return inf;
+   if (ray.point.y < center.y - radius && ray.vector.y < 0) return inf;
+   if (ray.point.y > center.y + radius && ray.vector.y > 0) return inf;
+   if (ray.point.z < center.z - radius && ray.vector.z < 0) return inf;
+   if (ray.point.z > center.z + radius && ray.vector.z > 0) return inf;
    const double A = ray.vector.mag2();
    const double B = 2*ray.vector.dot(ray.point-center);
    const double C = (ray.point-center).mag2()-radius*radius;
