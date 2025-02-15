@@ -1,4 +1,5 @@
 #include "triangle.h"
+#include "bithack.h"
 
 Triangle::Triangle(Vector c, Vector b, Vector a, Texture* t):Plane(Vector(0,0,0), t, 0., 0., 0., 0., 0.){
    center = c;
@@ -13,24 +14,23 @@ Triangle::Triangle(Vector c, Vector b, Vector a, Texture* t):Plane(Vector(0,0,0)
    yaw = asin(xsin);
    xcos = sqrt(1.-xsin*xsin);
 
-   zcos = right.x/xcos;
-   zsin = -right.y/xcos;
-   if(zsin<-1.)zsin = -1;
-   else if (zsin>1.)zsin=1.;
-   if(zcos<-1.)zcos = -1;
-   else if (zcos>1.)zcos=1.;
+   if(right.y>xcos)zsin = -1;
+   else if (right.y<-xcos)zsin=1.;
+   else zsin = -right.y/xcos;
+   if(right.x<-xcos) zcos = -1;
+   else if (right.x>xcos)zcos=1.;
+   else zcos = right.x/xcos;
    roll = asin(zsin);
 
-   ycos = vect.z/xcos;
-   if(ycos<-1.)ycos = -1;
-   else if (ycos>1.)ycos=1.;
+   if(vect.z<-xcos)ycos = -1;
+   else if (vect.z>xcos)ycos=1.;
+   else ycos = vect.z/xcos;
    pitch = acos(ycos);
    ysin = sqrt(1-ycos*ycos);
 
    up.x = -xsin*ysin*zcos+ycos*zsin;
    up.y = ycos*zcos+xsin*ysin*zsin;
    up.z = -xcos*ysin;
-   Vector temp = vect.cross(right);
    Vector np = solveScalers(right, up, vect, a-c);
    textureY = np.y;
    thirdX = np.x;
@@ -43,19 +43,22 @@ double Triangle::getIntersection(Ray ray){
    if(time==inf) 
       return time;
    Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*time-center); 
-   unsigned char tmp = (thirdX - dist.x) * textureY + (thirdX-textureX) * (dist.y - textureY) < 0.0;
-   return((tmp!=(textureX * dist.y < 0.0)) || (tmp != (dist.x * textureY - thirdX * dist.y < 0.0)))?inf:time;
+   unsigned char tmp = (thirdX - dist.x) * textureY < (textureX-thirdX) * (dist.y - textureY);
+   return((tmp != !xor_sign_bit(thirdX, dist.y)) 
+   || (tmp != (dist.x * textureY < thirdX * dist.y))) ? inf : time;
 }
 
 bool Triangle::getLightIntersection(Ray ray, double* fill){
    const double t = ray.vector.dot(vect);
    const double norm = vect.dot(ray.point)+d;
+   bool sameSign = !xor_sign_bit(norm, t);
+   if (norm == 0 || sameSign || (t > 0. && -norm >= t) || (t < 0. && -norm <= t)) return false;
    const double r = -norm/t;
-   if(r<=0. || r>=1.) return false;
    Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*r-center);
    
-   unsigned char tmp = (thirdX - dist.x) * textureY + (thirdX-textureX) * (dist.y - textureY) < 0.0;
-   if ((tmp!=(textureX * dist.y < 0.0)) || (tmp != (dist.x * textureY - thirdX * dist.y < 0.0))) return false;
+   unsigned char tmp = (thirdX - dist.x) * textureY  < (textureX-thirdX) * (dist.y - textureY);
+   if ((tmp != xor_sign_bit(textureX, dist.y)) 
+   || (tmp != (dist.x * textureY < thirdX * dist.y))) return false;
    
    if(texture->opacity>1-1E-6) return true;   
    unsigned char temp[4];

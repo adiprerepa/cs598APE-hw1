@@ -1,4 +1,5 @@
 #include "plane.h"
+#include "bithack.h"
 
 Plane::Plane(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty) : Shape(c, t, ya, pi, ro), vect(c), right(c), up(c){
    textureX = tx; textureY = ty;
@@ -76,16 +77,15 @@ void Plane::setRoll(double c){
 double Plane::getIntersection(Ray ray){
    const double t = ray.vector.dot(vect);
    const double norm = vect.dot(ray.point)+d;
-   const double r = -norm/t;
-   return (r>0)?r:inf;
+   return (xor_sign_bit(norm, t))?-norm/t:inf;
 }
 
 bool Plane::getLightIntersection(Ray ray, double* fill){
    const double t = ray.vector.dot(vect);
    const double norm = vect.dot(ray.point)+d;
+   bool sameSign = !xor_sign_bit(norm, t);
+   if (norm == 0 || sameSign || (t > 0. && -norm >= t) || (t < 0. && -norm <= t)) return false;
    const double r = -norm/t;
-   if(r<=0. || r>=1.) return false;
-
    if(texture->opacity>1-1E-6) return true;   
    Vector dist = solveScalers(right, up, vect, ray.point-center);
    unsigned char temp[4];
