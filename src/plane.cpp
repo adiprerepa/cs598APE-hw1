@@ -84,7 +84,7 @@ bool Plane::getLightIntersection(Ray ray, double* fill){
    const double t = ray.vector.dot(vect);
    const double norm = vect.dot(ray.point)+d;
    bool sameSign = !xor_sign_bit(norm, t);
-   if (norm == 0. || (t > 0. && (sameSign || norm >= -t)) || (t < 0. && (!sameSign || norm <= -t))) return false;
+   if (norm == 0 || sameSign || (t > 0. && -norm >= t) || (t < 0. && -norm <= t)) return false;
    const double r = -norm/t;
    if(texture->opacity>1-1E-6) return true;   
    Vector dist = solveScalers(right, up, vect, ray.point-center);

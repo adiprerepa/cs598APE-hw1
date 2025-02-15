@@ -1,4 +1,5 @@
 #include "disk.h"
+#include "bithack.h"
 Disk::Disk(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty):Plane(c, t, ya, pi, ro, tx, ty){}
 
 
@@ -17,8 +18,8 @@ double Disk::getIntersection(Ray ray){
 bool Disk::getLightIntersection(Ray ray, double* fill){
    const double t = ray.vector.dot(vect);
    const double norm = vect.dot(ray.point)+d;
-   bool sameSign = ((*(unsigned long long*)&norm ^ *(unsigned long long*)&t) & 0x8000000000000000ULL) == 0;
-   if (norm == 0. || (t > 0. && (sameSign || norm >= -t)) || (t < 0. && (!sameSign || norm <= -t))) return false;
+   bool sameSign = !xor_sign_bit(norm, t);
+   if (norm == 0 || sameSign || (t > 0. && -norm >= t) || (t < 0. && -norm <= t)) return false;
    const double r = -norm/t;
    Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*r-center);
    double dx2 = dist.x*dist.x;
