@@ -1,0 +1,22 @@
+# started on Sat Feb 15 21:52:50 2025
+
+
+ Performance counter stats for './main.exe -i inputs/elephant.ray --ppm -a inputs/elephant.animate --movie -F 24 -W 100 -H 100 -o output/elephant.mp4':
+
+          22847.10 msec task-clock                       #    1.001 CPUs utilized             
+              1557      context-switches                 #   68.149 /sec                      
+               243      cpu-migrations                   #   10.636 /sec                      
+             18883      page-faults                      #  826.494 /sec                      
+      106379923884      cycles                           #    4.656 GHz                       
+        1228368404      stalled-cycles-frontend          #    1.15% frontend cycles idle      
+      198546588976      instructions                     #    1.87  insn per cycle            
+                                                  #    0.01  stalled cycles per insn   
+       17021374948      branches                         #  745.013 M/sec                     
+          40411450      branch-misses                    #    0.24% of all branches           
+
+      22.825318661 seconds time elapsed
+
+      22.732058000 seconds user
+       0.114399000 seconds sys
+
+

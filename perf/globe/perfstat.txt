@@ -1,0 +1,22 @@
+# started on Sat Feb 15 21:53:15 2025
+
+
+ Performance counter stats for './main.exe -i inputs/globe.ray --ppm -a inputs/globe.animate --movie -F 24 -W 100 -H 100 -o output/globe.mp4':
+
+           1108.55 msec task-clock                       #    1.117 CPUs utilized             
+              7446      context-switches                 #    6.717 K/sec                     
+               279      cpu-migrations                   #  251.679 /sec                      
+             49146      page-faults                      #   44.333 K/sec                     
+        4949977765      cycles                           #    4.465 GHz                       
+         805461910      stalled-cycles-frontend          #   16.27% frontend cycles idle      
+        6991366887      instructions                     #    1.41  insn per cycle            
+                                                  #    0.12  stalled cycles per insn   
+         932482232      branches                         #  841.170 M/sec                     
+          29491871      branch-misses                    #    3.16% of all branches           
+
+       0.992443209 seconds time elapsed
+
+       0.846569000 seconds user
+       0.264759000 seconds sys
+
+
