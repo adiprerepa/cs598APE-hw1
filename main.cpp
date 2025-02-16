@@ -9,6 +9,7 @@
 #include "src/triangle.h"
 #include "src/Textures/imagetexture.h"
 #include "src/Textures/colortexture.h"
+#include "src/bvh.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
@@ -45,11 +46,52 @@ void set(int i, int j, unsigned char r, unsigned char g, unsigned char b){
    DATA[3*(i+j*W)+2] = b; 
 }
 
+void calcColor(unsigned char* toFill, Autonoma*, Ray ray, unsigned int depth, BVHNode* bvh) {
+   TimeAndShape ts = bvh->getMinTimeAndShape(ray);
+   double time = ts.time;
+   Shape* shape = ts.shape;
+   if (time == inf) {
+      double opacity, reflection, ambient;
+      Vector temp = ray.vector.normalize();
+      const double x = temp.x;
+      const double z = temp.z;
+      const double me = (temp.y<0)?-temp.y:temp.y;
+      const double angle = atan2(z, x);
+      (BLACK)->getColor(toFill, &ambient, &opacity, &reflection, fix(angle/M_TWO_PI),fix(me));
+      return;
+   }
+   Shape* curShape = bvh->shape;
+   Vector intersect = time*ray.vector+ray.point;
+   double opacity, reflection, ambient;
+   curShape->getColor(toFill, &ambient, &opacity, &reflection, NULL, Ray(intersect, ray.vector), depth);
+   double lightData[3];
+   getLight(lightData, NULL, intersect, curShape->getNormal(intersect), curShape->reversible());
+   toFill[0] = (unsigned char)(toFill[0]*(ambient+lightData[0]*(1-ambient)));
+   toFill[1] = (unsigned char)(toFill[1]*(ambient+lightData[1]*(1-ambient)));
+   toFill[2] = (unsigned char)(toFill[2]*(ambient+lightData[2]*(1-ambient)));
+   if(depth<10 && (opacity<1-1e-6 || reflection>1e-6)){
+      Vector normal = curShape->getNormal(intersect);
+      Ray reflectRay(intersect, ray.vector-2*ray.vector.dot(normal)*normal);
+      unsigned char temp[3];
+      calcColor(temp, NULL, reflectRay, depth+1, bvh);
+      toFill[0] = (unsigned char)(toFill[0]*(1-reflection)+reflection*temp[0]);
+      toFill[1] = (unsigned char)(toFill[1]*(1-reflection)+reflection*temp[1]);
+      toFill[2] = (unsigned char)(toFill[2]*(1-reflection)+reflection*temp[2]);
+   }
+}
+
 void refresh(Autonoma* c){
+   std::vector<Shape*> shapes;
+   for (ShapeNode* node = c->listStart; node != NULL; node = node->next) {
+      shapes.push_back(node->data);
+   }
+   int axis = rand() % 3;
+   std::sort(shapes.begin(), shapes.end(), customCompare);
+   BVHNode* bvh = new BVHNode(shapes, 0, shapes.size());
    for(int n = 0; n<H*W; ++n) 
    { 
       Vector ra = c->camera.forward+((double)(n%W)/W-.5)*((c->camera.right))+(.5-(double)(n/W)/H)*((c->camera.up));
-      calcColor(&DATA[3*n], c, Ray(c->camera.focus, ra), 0);
+      calcColor(&DATA[3*n], c, Ray(c->camera.focus, ra), 0, bvh);
    }
 }
 

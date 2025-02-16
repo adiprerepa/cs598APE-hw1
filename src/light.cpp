@@ -105,6 +105,30 @@ void Autonoma::removeLight(LightNode* s){
    free(s);
 }
 
+// BVHNode* Autonoma::buildBVH() {
+//    std::vector<Shape*> shapes;
+//    for (ShapeNode* node = listStart; node != NULL; node = node->next) {
+//       shapes.push_back(node->data);
+//    }
+//    int axis = rand() % 3;
+//    // std::function<bool(Shape*, Shape*)> comparator = [axis](Shape* a, Shape* b) -> bool {
+//    //    double a_center, b_center;
+//    //    if (axis == 0) {
+//    //        a_center = (a->bounds.min.x + a->bounds.max.x) * 0.5;
+//    //        b_center = (b->bounds.min.x + b->bounds.max.x) * 0.5;
+//    //    } else if (axis == 1) {
+//    //        a_center = (a->bounds.min.y + a->bounds.max.y) * 0.5;
+//    //        b_center = (b->bounds.min.y + b->bounds.max.y) * 0.5;
+//    //    } else { // axis == 2
+//    //        a_center = (a->bounds.min.z + a->bounds.max.z) * 0.5;
+//    //        b_center = (b->bounds.min.z + b->bounds.max.z) * 0.5;
+//    //    }
+//    //    return a_center < b_center;
+//    // };
+//    std::sort(shapes.begin(), shapes.end(), customCompare);
+//    return new BVHNode(shapes, 0, shapes.size());
+// }
+
 void getLight(double* tColor, Autonoma* aut, Vector point, Vector norm, unsigned char flip){
    tColor[0] = tColor[1] = tColor[2] = 0.;
    LightNode *t = aut->lightStart;

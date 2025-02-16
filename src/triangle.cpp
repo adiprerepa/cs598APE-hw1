@@ -36,6 +36,8 @@ Triangle::Triangle(Vector c, Vector b, Vector a, Texture* t):Plane(Vector(0,0,0)
    thirdX = np.x;
    
    d = -vect.dot(center);
+
+   bounds = AABB(center-Vector(textureX/2, textureY/2, 0), center+Vector(textureX/2, textureY/2, 0));
 }
 
 double Triangle::getIntersection(Ray ray){

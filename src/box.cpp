@@ -1,7 +1,11 @@
 #include "box.h"
 
-Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty):Plane(c, t, ya, pi, ro, tx, ty){}
-Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx):Plane(c, t, ya, pi, ro, tx,tx){}
+Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty):Plane(c, t, ya, pi, ro, tx, ty){
+   bounds = AABB(center-Vector(textureX/2, textureY/2, 0), center+Vector(textureX/2, textureY/2, 0));
+}
+Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx):Plane(c, t, ya, pi, ro, tx,tx){
+   bounds = AABB(center-Vector(textureX/2, textureY/2, 0), center+Vector(textureX/2, textureY/2, 0));
+}
 
 double Box::getIntersection(Ray ray){
    double time = Plane::getIntersection(ray);
