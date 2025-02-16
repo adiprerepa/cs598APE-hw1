@@ -9,7 +9,7 @@ public:
     AABB(Vector min, Vector max);
     Vector min;
     Vector max;
-    bool intersects(Ray ray);
+    bool intersects(const Ray &ray) const;
 };
 
 #endif

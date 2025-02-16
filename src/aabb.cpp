@@ -11,28 +11,43 @@ AABB::AABB(AABB a, AABB b) : max(Vector(0, 0, 0)), min(Vector(0, 0, 0)) {
     max.z = std::max(a.max.z, b.max.z);
 }
 
-bool AABB::intersects(Ray ray) {
-    double tmin = (min.x - ray.point.x) / ray.vector.x;
-    double tmax = (max.x - ray.point.x) / ray.vector.x;
+bool AABB::intersects(const Ray &ray) const {
+    // Precompute inverse direction components.
+    double invDirX = 1.0 / ray.vector.x;
+    double invDirY = 1.0 / ray.vector.y;
+    double invDirZ = 1.0 / ray.vector.z;
 
-    if (tmin > tmax) std::swap(tmin, tmax);
+    // X slab
+    double tmin = (min.x - ray.point.x) * invDirX;
+    double tmax = (max.x - ray.point.x) * invDirX;
+    if (invDirX < 0.0)
+        std::swap(tmin, tmax);
 
-    double tymin = (min.y - ray.point.y) / ray.vector.y;
-    double tymax = (max.y - ray.point.y) / ray.vector.y;
+    // Y slab
+    double tymin = (min.y - ray.point.y) * invDirY;
+    double tymax = (max.y - ray.point.y) * invDirY;
+    if (invDirY < 0.0)
+        std::swap(tymin, tymax);
 
-    if (tymin > tymax) std::swap(tymin, tymax);
+    // Check for overlap between X and Y slabs.
+    if ((tmin > tymax) || (tymin > tmax))
+        return false;
+    
+    // Merge the slabs.
+    if (tymin > tmin)
+        tmin = tymin;
+    if (tymax < tmax)
+        tmax = tymax;
 
-    if ((tmin > tymax) || (tymin > tmax)) return false;
+    // Z slab
+    double tzmin = (min.z - ray.point.z) * invDirZ;
+    double tzmax = (max.z - ray.point.z) * invDirZ;
+    if (invDirZ < 0.0)
+        std::swap(tzmin, tzmax);
 
-    if (tymin > tmin) tmin = tymin;
-    if (tymax < tmax) tmax = tymax;
-
-    double tzmin = (min.z - ray.point.z) / ray.vector.z;
-    double tzmax = (max.z - ray.point.z) / ray.vector.z;
-
-    if (tzmin > tzmax) std::swap(tzmin, tzmax);
-
-    if ((tmin > tzmax) || (tzmin > tmax)) return false;
+    // Final overlap test with Z slab.
+    if ((tmin > tzmax) || (tzmin > tmax))
+        return false;
 
     return true;
 }
