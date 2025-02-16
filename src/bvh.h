@@ -31,6 +31,11 @@ public:
 
     bool getLightIntersection(Ray ray, double* fill); 
 
+    ~BVHNode() {
+        if (left) delete left;
+        if (right) delete right;
+    }
+
 };
 bool customCompare(Shape* a, Shape* b);
 
