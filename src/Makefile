@@ -16,6 +16,9 @@ all: $(SRC_DIR)texture $(OBJ_FILES)
 texture:
 	cd $(SRC_DIR)Textures && make
 
+$(OBJ_DIR)bithack.obj: $(SRC_DIR)bithack.cpp $(SRC_DIR)bithack.h
+	$(FUNC) $(output)$(OBJ_DIR)bithack.obj $(copt) $(SRC_DIR)bithack.cpp $(FLAGS)
+
 $(OBJ_DIR)vector.obj: $(SRC_DIR)vector.cpp $(SRC_DIR)vector.h
 	$(FUNC) $(output)$(OBJ_DIR)vector.obj $(copt) $(SRC_DIR)vector.cpp $(FLAGS)
 

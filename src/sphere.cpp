@@ -10,12 +10,10 @@ bool Sphere::getLightIntersection(Ray ray, double* fill){
    const double B = 2*ray.vector.dot(ray.point-center);
    const double C = (ray.point-center).mag2()-radius*radius;
    const double descriminant = B*B-4*A*C;
-   if(descriminant<0. || descriminant<B*((B>=0)?B:-B)) return false;
+   if(descriminant<0. || descriminant<B*std::abs(B)) return false;
    
       const double desc = sqrt(descriminant);
-      const double root1 = (-B-desc)/(2*A);
-      const double root2 = (-B+desc)/(2*A);
-   const double time = (root1>0)?root1:root2;
+   const double time = (-B>desc)?(-B-desc)/(2*A):(-B+desc)/(2*A);
    if(time>=1.) return false;
    Vector point = ray.point+ray.vector*time;
    double data2 = (center.y-point.y+radius)/(2*radius);
@@ -37,9 +35,7 @@ double Sphere::getIntersection(Ray ray){
    if(descriminant<0) return inf;
    else{
       const double desc = sqrt(descriminant);
-      const double root1 = (-B-desc)/(2*A);
-      const double root2 = (-B+desc)/(2*A);
-      return (root1>0)?(root1):((root2>0)?root2:inf);
+      return (-B>desc)?(-B-desc)/(2*A):((desc>B)?(-B+desc)/(2*A):inf);
    }
 }
 void Sphere::move(){
