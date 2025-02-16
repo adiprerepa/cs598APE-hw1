@@ -115,7 +115,6 @@ void refresh(Autonoma* c){
    for (ShapeNode* node = c->listStart; node != NULL; node = node->next) {
       shapes.push_back(node->data);
    }
-   int axis = rand() % 3;
    std::sort(shapes.begin(), shapes.end(), customCompare);
    BVHNode* bvh = new BVHNode(shapes, 0, shapes.size());
    for(int n = 0; n<H*W; ++n) 
@@ -123,7 +122,7 @@ void refresh(Autonoma* c){
       Vector ra = c->camera.forward+((double)(n%W)/W-.5)*((c->camera.right))+(.5-(double)(n/W)/H)*((c->camera.up));
       calcColor(&DATA[3*n], c, Ray(c->camera.focus, ra), 0, bvh);
    }
-   free(bvh);
+   delete bvh;
 }
 
 void outputPPM(FILE* f){
