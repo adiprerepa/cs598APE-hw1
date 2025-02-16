@@ -1,9 +1,10 @@
 #include "sphere.h"
 
 Sphere::Sphere(const Vector &c, Texture* t, double ya, double pi, double ro, double rad): Shape(c, t, ya, pi, ro){
-  textureX = textureY = 1.;
-  normalMap = NULL;
+   textureX = textureY = 1.;
+   normalMap = NULL;
    radius = rad;
+   bounds = AABB(center-Vector(radius, radius, radius), center+Vector(radius, radius, radius));
 }
 bool Sphere::getLightIntersection(Ray ray, double* fill){
    const double A = ray.vector.mag2();

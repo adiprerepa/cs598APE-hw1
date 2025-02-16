@@ -1,12 +1,14 @@
 #ifndef __SHAPE_H__
 #define __SHAPE_H__
 #include "light.h"
+#include "aabb.h"
 
 class Shape{
   public:
    Shape(const Vector &c, Texture* t, double ya, double pi, double ro);
    double yaw, pitch, roll, xsin, xcos, ysin, ycos, zsin, zcos;
    Vector center;
+   AABB bounds;
    Texture* texture;
    double textureX, textureY, mapX, mapY, mapOffX, mapOffY;
    Texture* normalMap;
@@ -21,7 +23,5 @@ class Shape{
    virtual void setPitch(double d) = 0;
    virtual void setRoll(double d) = 0;
 };
-
-void calcColor(unsigned char* toFill, Autonoma*, Ray ray, unsigned int depth);
 
 #endif

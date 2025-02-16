@@ -5,6 +5,7 @@ Plane::Plane(const Vector &c, Texture* t, double ya, double pi, double ro, doubl
    setAngles(yaw, pitch, roll);
    normalMap = NULL;
    mapX = textureX; mapY = textureY;
+   bounds = AABB(Vector(-inf, -inf, -inf), Vector(inf, inf, inf));
 }
 
 void Plane::setAngles(double a, double b, double c){
@@ -55,6 +56,24 @@ void Plane::setAngles(double a, double b, double c){
    v2zv3y = up.z * vect.y;
 
    d = -vect.dot(center);
+
+   // Vector halfRight = right * (textureX / 2.0);
+   //  Vector halfUp = up * (textureY / 2.0);
+
+   //  Vector c1 = center + halfRight + halfUp;
+   //  Vector c2 = center + halfRight - halfUp;
+   //  Vector c3 = center - halfRight + halfUp;
+   //  Vector c4 = center - halfRight - halfUp;
+
+   //  // Calculate bounding box min/max values
+   //  double minX = std::min(std::min(c1.x, c2.x), std::min(c3.x, c4.x));
+   //  double minY = std::min(std::min(c1.y, c2.y), std::min(c3.y, c4.y));
+   //  double minZ = std::min(std::min(c1.z, c2.z), std::min(c3.z, c4.z));
+   //  double maxX = std::max(std::max(c1.x, c2.x), std::max(c3.x, c4.x));
+   //  double maxY = std::max(std::max(c1.y, c2.y), std::max(c3.y, c4.y));
+   //  double maxZ = std::max(std::max(c1.z, c2.z), std::max(c3.z, c4.z));
+
+   //  bounds = AABB(Vector(minX, minY, minZ), Vector(maxX, maxY, maxZ));
 }
 
 void Plane::setYaw(double a){
@@ -100,6 +119,24 @@ void Plane::setYaw(double a){
    v2zv3x = up.z * vect.x;
    v2zv3y = up.z * vect.y;
    d = -vect.dot(center);
+
+   // Vector halfRight = right * (textureX / 2.0);
+   //  Vector halfUp = up * (textureY / 2.0);
+
+   //  Vector c1 = center + halfRight + halfUp;
+   //  Vector c2 = center + halfRight - halfUp;
+   //  Vector c3 = center - halfRight + halfUp;
+   //  Vector c4 = center - halfRight - halfUp;
+
+   //  // Calculate bounding box min/max values
+   //  double minX = std::min(std::min(c1.x, c2.x), std::min(c3.x, c4.x));
+   //  double minY = std::min(std::min(c1.y, c2.y), std::min(c3.y, c4.y));
+   //  double minZ = std::min(std::min(c1.z, c2.z), std::min(c3.z, c4.z));
+   //  double maxX = std::max(std::max(c1.x, c2.x), std::max(c3.x, c4.x));
+   //  double maxY = std::max(std::max(c1.y, c2.y), std::max(c3.y, c4.y));
+   //  double maxZ = std::max(std::max(c1.z, c2.z), std::max(c3.z, c4.z));
+
+   //  bounds = AABB(Vector(minX, minY, minZ), Vector(maxX, maxY, maxZ));
 }
 
 void Plane::setPitch(double b){
@@ -141,6 +178,24 @@ void Plane::setPitch(double b){
    v2zv3x = up.z * vect.x;
    v2zv3y = up.z * vect.y;
    d = -vect.dot(center);
+
+   // Vector halfRight = right * (textureX / 2.0);
+   //  Vector halfUp = up * (textureY / 2.0);
+
+   //  Vector c1 = center + halfRight + halfUp;
+   //  Vector c2 = center + halfRight - halfUp;
+   //  Vector c3 = center - halfRight + halfUp;
+   //  Vector c4 = center - halfRight - halfUp;
+
+   //  // Calculate bounding box min/max values
+   //  double minX = std::min(std::min(c1.x, c2.x), std::min(c3.x, c4.x));
+   //  double minY = std::min(std::min(c1.y, c2.y), std::min(c3.y, c4.y));
+   //  double minZ = std::min(std::min(c1.z, c2.z), std::min(c3.z, c4.z));
+   //  double maxX = std::max(std::max(c1.x, c2.x), std::max(c3.x, c4.x));
+   //  double maxY = std::max(std::max(c1.y, c2.y), std::max(c3.y, c4.y));
+   //  double maxZ = std::max(std::max(c1.z, c2.z), std::max(c3.z, c4.z));
+
+   //  bounds = AABB(Vector(minX, minY, minZ), Vector(maxX, maxY, maxZ));
 }
 
 void Plane::setRoll(double c){
@@ -185,6 +240,24 @@ void Plane::setRoll(double c){
    v2zv3x = up.z * vect.x;
    v2zv3y = up.z * vect.y;
    d = -vect.dot(center);
+
+   // Vector halfRight = right * (textureX / 2.0);
+   //  Vector halfUp = up * (textureY / 2.0);
+
+   //  Vector c1 = center + halfRight + halfUp;
+   //  Vector c2 = center + halfRight - halfUp;
+   //  Vector c3 = center - halfRight + halfUp;
+   //  Vector c4 = center - halfRight - halfUp;
+
+   //  // Calculate bounding box min/max values
+   //  double minX = std::min(std::min(c1.x, c2.x), std::min(c3.x, c4.x));
+   //  double minY = std::min(std::min(c1.y, c2.y), std::min(c3.y, c4.y));
+   //  double minZ = std::min(std::min(c1.z, c2.z), std::min(c3.z, c4.z));
+   //  double maxX = std::max(std::max(c1.x, c2.x), std::max(c3.x, c4.x));
+   //  double maxY = std::max(std::max(c1.y, c2.y), std::max(c3.y, c4.y));
+   //  double maxZ = std::max(std::max(c1.z, c2.z), std::max(c3.z, c4.z));
+
+   //  bounds = AABB(Vector(minX, minY, minZ), Vector(maxX, maxY, maxZ));
 }
 
 double Plane::getIntersection(Ray ray){
