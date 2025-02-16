@@ -1,22 +1,22 @@
-# started on Sat Feb 15 22:22:07 2025
+# started on Sun Feb 16 00:13:34 2025
 
 
  Performance counter stats for './main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500':
 
-            339.09 msec task-clock                       #    0.998 CPUs utilized             
-                 2      context-switches                 #    5.898 /sec                      
-                 0      cpu-migrations                   #    0.000 /sec                      
-               328      page-faults                      #  967.301 /sec                      
-        1582224637      cycles                           #    4.666 GHz                       
-          30260275      stalled-cycles-frontend          #    1.91% frontend cycles idle      
-        3014283899      instructions                     #    1.91  insn per cycle            
-                                                  #    0.01  stalled cycles per insn   
-         372478129      branches                         #    1.098 G/sec                     
-            456968      branch-misses                    #    0.12% of all branches           
+            601.49 msec task-clock                       #   14.706 CPUs utilized             
+               141      context-switches                 #  234.416 /sec                      
+                 4      cpu-migrations                   #    6.650 /sec                      
+              2578      page-faults                      #    4.286 K/sec                     
+        2298204827      cycles                           #    3.821 GHz                       
+          46800213      stalled-cycles-frontend          #    2.04% frontend cycles idle      
+        3066125730      instructions                     #    1.33  insn per cycle            
+                                                  #    0.02  stalled cycles per insn   
+         385664104      branches                         #  641.177 M/sec                     
+           1398068      branch-misses                    #    0.36% of all branches           
 
-       0.339698088 seconds time elapsed
+       0.040900847 seconds time elapsed
 
-       0.335673000 seconds user
-       0.003996000 seconds sys
+       0.596339000 seconds user
+       0.003942000 seconds sys
 
 

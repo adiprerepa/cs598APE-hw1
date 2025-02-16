@@ -9,13 +9,15 @@ RESET="\e[0m"
 PIANOROOM=false
 ELEPHANT=false
 GLOBE=false
+NUM_THREADS=1  # Default thread count
 
-while getopts "PEG" opt; do
+while getopts "PEGt:" opt; do
   case ${opt} in
     P ) PIANOROOM=true ;;
     E ) ELEPHANT=true ;;
     G ) GLOBE=true ;;
-    \? ) echo "Usage: $0 [-P] [-E] [-G]"; exit 1 ;;
+    t ) NUM_THREADS=${OPTARG} ;;
+    \? ) echo "Usage: $0 [-P] [-E] [-G] [-t <num_threads>]"; exit 1 ;;
   esac
 done
 
@@ -54,6 +56,13 @@ compare_outputs() {
     fi
   done
 }
+
+# Set OpenMP thread environment
+export OMP_THREAD_LIMIT=$NUM_THREADS
+export OMP_NUM_THREADS=$NUM_THREADS
+export OMP_DISPLAY_ENV=TRUE
+
+echo "Using $NUM_THREADS threads for execution."
 
 if [ "$PIANOROOM" = true ]; then
   perf record -o "$PERF_DIR/pianoroom/perf.data" -F 99 -g -- ./main.exe -i inputs/pianoroom.ray --ppm -o output/pianoroom.ppm -H 500 -W 500
