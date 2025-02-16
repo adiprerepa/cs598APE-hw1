@@ -1,7 +1,7 @@
 #include "bvh.h"
 
 bool customCompare(Shape* a, Shape* b) {
-    uint axis = 1;
+    uint axis = rand() % 3;
     if (axis == 0) {
         double a_center = (a->bounds.min.x + a->bounds.max.x) * 0.5;
         double b_center = (b->bounds.min.x + b->bounds.max.x) * 0.5;
@@ -25,18 +25,13 @@ BVHNode::BVHNode(std::vector<Shape*>& shapes, size_t start, size_t end): left(nu
 
     size_t objectSpan = end - start;
     if (objectSpan == 1) {
-        // Only one shape: this node becomes a leaf.
         shape = shapes[start];
         bounds = shape->bounds;
     } else if (objectSpan == 2) {
-        // Two shapes: sort them and assign.
-        if (customCompare(shapes[start + 1], shapes[start]))
-            std::swap(shapes[start], shapes[start + 1]);
         left = new BVHNode(nullptr, nullptr, shapes[start]->bounds, shapes[start]);
         right = new BVHNode(nullptr, nullptr, shapes[start + 1]->bounds, shapes[start + 1]);
         bounds = AABB(left->bounds, right->bounds);
     } else {
-        // More than two shapes: sort and split.
         size_t mid = start + objectSpan / 2;
         left = new BVHNode(shapes, start, mid);
         right = new BVHNode(shapes, mid, end);
@@ -53,5 +48,5 @@ TimeAndShape BVHNode::getMinTimeAndShape(Ray ray) {
     }
     TimeAndShape leftTime = left ? left->getMinTimeAndShape(ray) : TimeAndShape(inf, nullptr);
     TimeAndShape rightTime = right ? right->getMinTimeAndShape(ray) : TimeAndShape(inf, nullptr);
-    return leftTime.time < rightTime.time ? leftTime : rightTime;
+    return leftTime.time <= rightTime.time ? leftTime : rightTime;
 }

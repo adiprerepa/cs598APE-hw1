@@ -1,6 +1,10 @@
 #include "disk.h"
 Disk::Disk(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty):Plane(c, t, ya, pi, ro, tx, ty){
-   bounds = AABB(center-Vector(textureX/2, textureY/2, 0), center+Vector(textureX/2, textureY/2, 0));
+   bounds = AABB(Vector(-999, -999, -999), Vector(999, 999, 999));
+   // double radiusX = textureX;  // Disk's extent along the right vector
+   // double radiusY = textureY;  // Disk's extent along the up vector
+   // bounds.min = Vector(center.x - radiusX, center.y - radiusY, center.z);
+   // bounds.max = Vector(center.x + radiusX, center.y + radiusY, center.z);
 }
 
 

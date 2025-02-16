@@ -37,7 +37,14 @@ Triangle::Triangle(Vector c, Vector b, Vector a, Texture* t):Plane(Vector(0,0,0)
    
    d = -vect.dot(center);
 
-   bounds = AABB(center-Vector(textureX/2, textureY/2, 0), center+Vector(textureX/2, textureY/2, 0));
+   bounds = AABB(Vector(-inf, -inf, -inf), Vector(inf, inf, inf));
+   bounds.min.x = std::min(a.x, std::min(b.x, c.x));
+   bounds.min.y = std::min(a.y, std::min(b.y, c.y));
+   bounds.min.z = std::min(a.z, std::min(b.z, c.z));
+
+   bounds.max.x = std::max(a.x, std::max(b.x, c.x));
+   bounds.max.y = std::max(a.y, std::max(b.y, c.y));
+   bounds.max.z = std::max(a.z, std::max(b.z, c.z));
 }
 
 double Triangle::getIntersection(Ray ray){

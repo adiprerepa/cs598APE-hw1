@@ -1,11 +1,52 @@
 #include "box.h"
+#include <algorithm> // for std::min and std::max
 
-Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty):Plane(c, t, ya, pi, ro, tx, ty){
-   bounds = AABB(center-Vector(textureX/2, textureY/2, 0), center+Vector(textureX/2, textureY/2, 0));
+Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx, double ty)
+    : Plane(c, t, ya, pi, ro, tx, ty)
+{
+    // Compute half extents along right and up vectors.
+    Vector halfRight = right * (textureX / 2.0);
+    Vector halfUp = up * (textureY / 2.0);
+
+    // Compute the four corners of the box.
+    Vector c1 = center + halfRight + halfUp;
+    Vector c2 = center + halfRight - halfUp;
+    Vector c3 = center - halfRight + halfUp;
+    Vector c4 = center - halfRight - halfUp;
+
+    // Calculate min/max coordinates with nested std::min and std::max.
+    double minX = std::min(std::min(c1.x, c2.x), std::min(c3.x, c4.x));
+    double minY = std::min(std::min(c1.y, c2.y), std::min(c3.y, c4.y));
+    double minZ = std::min(std::min(c1.z, c2.z), std::min(c3.z, c4.z));
+    double maxX = std::max(std::max(c1.x, c2.x), std::max(c3.x, c4.x));
+    double maxY = std::max(std::max(c1.y, c2.y), std::max(c3.y, c4.y));
+    double maxZ = std::max(std::max(c1.z, c2.z), std::max(c3.z, c4.z));
+
+    // Set the bounding box.
+    bounds = AABB(Vector(minX, minY, minZ), Vector(maxX, maxY, maxZ));
 }
-Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx):Plane(c, t, ya, pi, ro, tx,tx){
-   bounds = AABB(center-Vector(textureX/2, textureY/2, 0), center+Vector(textureX/2, textureY/2, 0));
+
+Box::Box(const Vector &c, Texture* t, double ya, double pi, double ro, double tx)
+    : Plane(c, t, ya, pi, ro, tx, tx)
+{
+    Vector halfRight = right * (textureX / 2.0);
+    Vector halfUp = up * (textureY / 2.0);
+
+    Vector c1 = center + halfRight + halfUp;
+    Vector c2 = center + halfRight - halfUp;
+    Vector c3 = center - halfRight + halfUp;
+    Vector c4 = center - halfRight - halfUp;
+
+    double minX = std::min(std::min(c1.x, c2.x), std::min(c3.x, c4.x));
+    double minY = std::min(std::min(c1.y, c2.y), std::min(c3.y, c4.y));
+    double minZ = std::min(std::min(c1.z, c2.z), std::min(c3.z, c4.z));
+    double maxX = std::max(std::max(c1.x, c2.x), std::max(c3.x, c4.x));
+    double maxY = std::max(std::max(c1.y, c2.y), std::max(c3.y, c4.y));
+    double maxZ = std::max(std::max(c1.z, c2.z), std::max(c3.z, c4.z));
+
+    bounds = AABB(Vector(minX, minY, minZ), Vector(maxX, maxY, maxZ));
 }
+
 
 double Box::getIntersection(Ray ray){
    double time = Plane::getIntersection(ray);
