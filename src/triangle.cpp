@@ -44,8 +44,7 @@ double Triangle::getIntersection(Ray ray){
       return time;
    Vector dist = solveScalers(right, up, vect, ray.point+ray.vector*time-center); 
    unsigned char tmp = (thirdX - dist.x) * textureY < (textureX-thirdX) * (dist.y - textureY);
-   return((tmp != !xor_sign_bit(thirdX, dist.y)) 
-   || (tmp != (dist.x * textureY < thirdX * dist.y))) ? inf : time;
+   return((tmp != xor_sign_bit(thirdX, dist.y)) || (tmp != (dist.x * textureY < thirdX * dist.y))) ? inf : time;
 }
 
 bool Triangle::getLightIntersection(Ray ray, double* fill){
