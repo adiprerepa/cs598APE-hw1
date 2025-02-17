@@ -1,7 +1,7 @@
 #include "bvh.h"
 
 bool customCompare(Shape* a, Shape* b) {
-    uint axis = rand() % 3;
+    uint axis = 1;
     if (axis == 0) {
         double a_center = (a->bounds.min.x + a->bounds.max.x) * 0.5;
         double b_center = (b->bounds.min.x + b->bounds.max.x) * 0.5;

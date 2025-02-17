@@ -13,10 +13,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
+#include <omp.h>
+
 #include <iostream>
 using namespace std;
 
 #include <sys/time.h>
+
+BVHNode* bvh;
 
 float tdiff(struct timeval *start, struct timeval *end) {
   return (end->tv_sec-start->tv_sec) + 1e-6*(end->tv_usec-start->tv_usec);
@@ -111,18 +115,22 @@ void calcColor(unsigned char* toFill, Autonoma* c, Ray ray, unsigned int depth, 
 }
 
 void refresh(Autonoma* c){
-   std::vector<Shape*> shapes;
-   for (ShapeNode* node = c->listStart; node != NULL; node = node->next) {
-      shapes.push_back(node->data);
+   if (!bvh) {
+      std::vector<Shape*> shapes;
+      for (ShapeNode* node = c->listStart; node != NULL; node = node->next) {
+         shapes.push_back(node->data);
+      }
+      std::sort(shapes.begin(), shapes.end(), customCompare);
+      bvh = new BVHNode(shapes, 0, shapes.size());
    }
-   std::sort(shapes.begin(), shapes.end(), customCompare);
-   BVHNode* bvh = new BVHNode(shapes, 0, shapes.size());
+
+   #pragma omp parallel for schedule(dynamic)
    for(int n = 0; n<H*W; ++n) 
    { 
       Vector ra = c->camera.forward+((double)(n%W)/W-.5)*((c->camera.right))+(.5-(double)(n/W)/H)*((c->camera.up));
       calcColor(&DATA[3*n], c, Ray(c->camera.focus, ra), 0, bvh);
    }
-   delete bvh;
+   // delete bvh;
 }
 
 void outputPPM(FILE* f){

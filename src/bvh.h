@@ -32,8 +32,8 @@ public:
     bool getLightIntersection(Ray ray, double* fill); 
 
     ~BVHNode() {
-        if (left) delete left;
-        if (right) delete right;
+        // if (left) delete left;
+        // if (right) delete right;
     }
 
 };
