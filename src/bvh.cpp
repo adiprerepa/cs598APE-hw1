@@ -41,12 +41,15 @@ BVHNode::BVHNode(std::vector<Shape*>& shapes, size_t start, size_t end): left(nu
 
 TimeAndShape BVHNode::getMinTimeAndShape(Ray ray) {
     if (!bounds.intersects(ray))
-        return TimeAndShape(inf, nullptr);
+        return {std::numeric_limits<double>::infinity(), nullptr};
+    
     if (shape) {
         double time = shape->getIntersection(ray);
-        return TimeAndShape(time, time < inf ? shape : nullptr);
+        return {time, time < std::numeric_limits<double>::infinity() ? shape : nullptr};
     }
-    TimeAndShape leftTime = left ? left->getMinTimeAndShape(ray) : TimeAndShape(inf, nullptr);
-    TimeAndShape rightTime = right ? right->getMinTimeAndShape(ray) : TimeAndShape(inf, nullptr);
-    return leftTime.time <= rightTime.time ? leftTime : rightTime;
+
+    TimeAndShape leftTime = left ? left->getMinTimeAndShape(ray) : TimeAndShape(std::numeric_limits<double>::infinity(), nullptr);
+    TimeAndShape rightTime = right ? right->getMinTimeAndShape(ray) : TimeAndShape(std::numeric_limits<double>::infinity(), nullptr);
+    
+    return (leftTime.time <= rightTime.time) ? leftTime : rightTime;
 }
