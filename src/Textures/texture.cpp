@@ -8,10 +8,14 @@ double interpolate(double a,double b,double x)
 
 Texture::Texture(double am, double op, double ref):ambient(am),opacity(op), reflection(ref){}
 
-double fix(double a){
-   a = fmod(a, 1.);
-   if(a<0) a+=1.;
-   return a;
+double fix(double a) {
+    if (a >= 0.0 && a < 1.0) return a;
+    if (a >= -1.0 && a < 0.0) return a + 1.0;
+    
+    double intPart;
+    double fracPart = modf(a, &intPart);
+    if (fracPart < 0.0) fracPart += 1.0;
+    return fracPart;
 }
 
 double ground(double e){
