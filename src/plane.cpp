@@ -260,11 +260,12 @@ void Plane::setRoll(double c){
    //  bounds = AABB(Vector(minX, minY, minZ), Vector(maxX, maxY, maxZ));
 }
 
-double Plane::getIntersection(Ray ray){
-   const double t = ray.vector.dot(vect);
-   const double norm = vect.dot(ray.point)+d;
-   const double r = -norm/t;
-   return (r>0)?r:inf;
+double Plane::getIntersection(Ray ray) {
+    const double t = ray.vector.x * vect.x + ray.vector.y * vect.y + ray.vector.z * vect.z;
+    if (t == 0.0) return inf;
+    const double norm = ray.point.x * vect.x + ray.point.y * vect.y + ray.point.z * vect.z + d;
+    const double r = -norm/t;
+    return r > 0.0 ? r : inf;
 }
 
 Vector Plane::solveScalers(Vector C) {
