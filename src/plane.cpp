@@ -268,19 +268,21 @@ double Plane::getIntersection(Ray ray){
 }
 
 Vector Plane::solveScalers(Vector C) {
-    double a = C.z * v2yv3x - C.y * v2zv3x
-             - C.z * v2xv3y + C.x * v2zv3y
-             + C.y * v2xv3z - C.x * v2yv3z;
-
-    double b = -C.z * v1yv3x + C.y * v1zv3x
-              + C.z * v1xv3y - C.x * v1zv3y
-              - C.y * v1xv3z + C.x * v1yv3z;
-
-    double c = C.z * v1yv2x - C.y * v1zv2x
-             - C.z * v1xv2y + C.x * v1zv2y
-             + C.y * v1xv2z - C.x * v1yv2z;
-
-   return Vector(a / denom, b / denom, c / denom);
+    const double inv_denom = 1.0 / denom;
+    const double Cx = C.x, Cy = C.y, Cz = C.z;
+    
+    const double Cz_v2y = Cz * v2yv3x;
+    const double Cy_v2z = Cy * v2zv3x;
+    const double Cz_v2x = Cz * v2xv3y;
+    const double Cx_v2z = Cx * v2zv3y;
+    const double Cy_v2x = Cy * v2xv3z;
+    const double Cx_v2y = Cx * v2yv3z;
+    
+    const double a = (Cz_v2y - Cy_v2z - Cz_v2x + Cx_v2z + Cy_v2x - Cx_v2y) * inv_denom;
+    const double b = (-Cz * v1yv3x + Cy * v1zv3x + Cz * v1xv3y - Cx * v1zv3y - Cy * v1xv3z + Cx * v1yv3z) * inv_denom;
+    const double c = (Cz * v1yv2x - Cy * v1zv2x - Cz * v1xv2y + Cx * v1zv2y + Cy * v1xv2z - Cx * v1yv2z) * inv_denom;
+    
+    return Vector(a, b, c);
 }
 
 bool Plane::getLightIntersection(Ray ray, double* fill){
