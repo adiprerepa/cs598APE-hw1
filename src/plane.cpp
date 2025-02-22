@@ -285,22 +285,30 @@ Vector Plane::solveScalers(Vector C) {
     return Vector(a, b, c);
 }
 
-bool Plane::getLightIntersection(Ray ray, double* fill){
-   const double t = ray.vector.dot(vect);
-   const double norm = vect.dot(ray.point)+d;
-   const double r = -norm/t;
-   if(r<=0. || r>=1.) return false;
-
-   if(texture->opacity>1-1E-6) return true;   
-   Vector dist = solveScalers(ray.point-center);
-   unsigned char temp[4];
-   double amb, op, ref;
-   texture->getColor(temp, &amb, &op, &ref,fix(dist.x/textureX-.5), fix(dist.y/textureY-.5));
-   if(op>1-1E-6) return true;
-   fill[0]*=temp[0]/255.;
-   fill[1]*=temp[1]/255.;
-   fill[2]*=temp[2]/255.;
-   return false;
+bool Plane::getLightIntersection(Ray ray, double* fill) {
+    const double t = ray.vector.dot(vect);
+    if (t == 0.0) return false;  // avoid division by zero
+    
+    const double norm = vect.dot(ray.point) + d;
+    const double r = -norm/t;
+    if (r <= 0.0 || r >= 1.0) return false;
+    
+    if (texture->opacity > 1.0 - 1E-6) return true;
+    
+    const Vector& dist = solveScalers(ray.point - center);
+    const double tx = fix(dist.x/textureX - 0.5);
+    const double ty = fix(dist.y/textureY - 0.5);
+    
+    unsigned char temp[4];
+    double amb, op, ref;
+    texture->getColor(temp, &amb, &op, &ref, tx, ty);
+    
+    if (op > 1.0 - 1E-6) return true;
+    
+    fill[0] *= temp[0]/255.0;
+    fill[1] *= temp[1]/255.0;
+    fill[2] *= temp[2]/255.0;
+    return false;
 }
 
 void Plane::move(){
