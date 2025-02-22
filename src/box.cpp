@@ -57,22 +57,34 @@ double Box::getIntersection(Ray ray){
    return ( (std::abs(dist.x) * 2) > textureX || (std::abs(dist.y) * 2 ) > textureY ) ? inf : time;
 }
 
-bool Box::getLightIntersection(Ray ray, double* fill){
-   const double t = ray.vector.dot(vect);
-   const double norm = vect.dot(ray.point)+d;
-   const double r = -norm/t;
-   if(r<=0. || r>=1.) return false;
-   Vector dist = solveScalers(ray.point+ray.vector*r-center);
-   if( ((dist.x>=0)?dist.x:-dist.x)>textureX/2 || ((dist.y>=0)?dist.y:-dist.y)>textureY/2 ) return false;
-   //    if( (std::abs(dist.x) * 2)>textureX || (std::abs(dist.y) * 2)>textureY ) return false;
-
-   if(texture->opacity>1-1E-6) return true;   
-   unsigned char temp[4];
-   double amb, op, ref;
-   texture->getColor(temp, &amb, &op, &ref,fix(dist.x/textureX-.5), fix(dist.y/textureY-.5));
-   if(op>1-1E-6) return true;
-   fill[0]*=temp[0]/255.;
-   fill[1]*=temp[1]/255.;
-   fill[2]*=temp[2]/255.;
-   return false;
+bool Box::getLightIntersection(Ray ray, double* fill) {
+    const double t = ray.vector.dot(vect);
+    if (std::abs(t) < 1e-10) return false;  // avoid division by near-zero
+    
+    const double norm = vect.dot(ray.point) + d;
+    const double r = -norm/t;
+    if (r <= 0. || r >= 1.) return false;
+    
+    const Vector intersection_point = ray.point + ray.vector * r;
+    const Vector dist = solveScalers(intersection_point - center);
+    
+    const double abs_dx = std::abs(dist.x);
+    const double abs_dy = std::abs(dist.y);
+    if (abs_dx > textureX/2 || abs_dy > textureY/2) return false;
+    
+    if (texture->opacity > 1-1E-6) return true;
+    
+    const double tex_x = dist.x/textureX - 0.5;
+    const double tex_y = dist.y/textureY - 0.5;
+    
+    unsigned char temp[4];
+    double amb, op, ref;
+    texture->getColor(temp, &amb, &op, &ref, fix(tex_x), fix(tex_y));
+    
+    if (op > 1-1E-6) return true;
+    
+    fill[0] *= temp[0]/255.;
+    fill[1] *= temp[1]/255.;
+    fill[2] *= temp[2]/255.;
+    return false;
 }
